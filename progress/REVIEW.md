@@ -37,3 +37,5 @@ At the end of each week append: actual hours, questions independently solved, qu
 - BFSI-01 guided diagnostic completed: 2/4 assisted learning, H3 support, no independent pass/mastery. Learner correctly connects updated balance with rejection; statement resumption and exception/return rollback semantics corrected. Review scheduled 2026-11-11. Next active question: JAVA-01, unattempted.
 
 - JAVA-01 first response correctly identifies hashCode as a diagnostic starting point. Key/hash/value terminology clarified; a concrete key-mutation prediction is pending. No score or mastery recorded. Partial recap saved.
+
+- JAVA-01 second response predicts the failed lookup correctly but confuses hash/bucket changes with self-equality. Instructor probe executed successfully on Java 17.0.9 and used to correct the mechanism; stable-key redesign remains pending.

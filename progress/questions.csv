@@ -1,5 +1,5 @@
 id,priority,status,attempts,score,highest_hint,last_attempt,next_review,independent_pass_dates,evidence
-JAVA-01,P0,in_progress,1,,H2,2026-11-10,2026-11-11,,"Correctly identified hashCode override as first investigation point. Clarified stored key reference, hash-based candidate selection, identity/equality matching, and get returning a value. Concrete mutation prediction pending; no root cause or mastery established."
+JAVA-01,P0,in_progress,2,,H3,2026-11-10,2026-11-11,,"Correct null prediction, incorrect causal model (unchanged hash/bucket and failed equality on same reference). Instructor Java 17.0.9 probe showed hash 101->202, get null, equals calls 0, self-equality true, size 1. Root cause explained; safe key design pending. No independent pass."
 JAVA-02,P0,unattempted,0,,,,,,
 JAVA-03,P0,unattempted,0,,,,,,
 JAVA-04,P0,unattempted,0,,,,,,

@@ -8,9 +8,9 @@
   "current_week": 1,
   "active_question_id": "JAVA-01",
   "question_status": "in_progress",
-  "highest_hint_used": "H2",
-  "pending_prompt": "For a toy AccountKey, hashCode() returns accountId and equals() compares accountId. Insert key with accountId 101 mapped to ACTIVE, then set that same object's accountId to 202 and call map.get(key). Does using the same key object guarantee the lookup still finds the value? Explain using insertion and lookup hashes.",
-  "next_action": "Assess the mutable-key prediction. Do not reveal the output before the learner predicts. If needed, trace insertion-time versus lookup-time hash and candidate location with a small table, distinguishing stored node metadata from the live key reference. After a prediction, offer or run a minimal Java experiment to test it. Later explore hash collisions, equal-but-distinct keys, and stable key design one at a time.",
+  "highest_hint_used": "H3",
+  "pending_prompt": "How would you change the design of AccountKey to prevent this failure when it is used as a HashMap key?",
+  "next_action": "Assess a design that keeps equality/hash-relevant state stable while the key is stored. If the learner proposes immutability, ask how they would enforce it in this simple class without overclaiming that final alone makes nested objects immutable. Later test equal-but-distinct keys and collisions, distinguishing full hash from bucket index. Do not give the redesign before the learner tries.",
   "last_session": "sessions/2026-11-10-lesson-02.md",
   "teaching_mode": "conversation-led visual problem solving with adaptive explanations, focused readings, prediction, guided debugging, correction, and corner-case exploration",
   "completed_diagnostic_questions": [
@@ -21,9 +21,10 @@
     "Observed boundary omission: strict balance > withdrawal excludes withdrawing the exact available balance under the exercise assumptions.",
     "Needs clarification: read-level lock type and scope; preventing nonrepeatable reads alone does not establish the entire withdrawal correctness guarantee.",
     "Observed misconception: learner expected two retained shared row locks to upgrade and write sequentially; needs the circular-wait model for lock-upgrade deadlock.",
-    "Review needed: a waiting SELECT FOR UPDATE resumes without a new application query; normal return/block exit is not automatic rollback and Spring exception rollback depends on configured rules."
+    "Review needed: a waiting SELECT FOR UPDATE resumes without a new application query; normal return/block exit is not automatic rollback and Spring exception rollback depends on configured rules.",
+    "JAVA-01 observed misconception: attributed same-reference lookup failure to equals with unchanged hash/bucket. In the supplied class hash changes 101 to 202, while self-equality remains true; corrected with a runnable probe and needs later retrieval."
   ],
-  "assessment_note": "First JAVA-01 response correctly identifies hashCode as a relevant diagnostic starting point. Clarifying key/hash/value terminology and identity/equality roles without treating ambiguous wording as proof of a misconception. Concrete key-mutation prediction supplied (H2); no score or independent pass yet. BFSI-01 remains assisted learning, review due 2026-11-11.",
+  "assessment_note": "Learner correctly predicted failed lookup but incorrectly kept hash/bucket unchanged and attributed failure to equals on the same reference. Instructor ran MutableKeyProbe on Java 17.0.9: before ACTIVE; after null; self-equality true; equals calls during failed lookup zero; size 1 and entry still iterable. Explicit correction supplied (H3). Stable-key design question pending; no score or mastery.",
   "remote_url": "https://github.com/Sumitmishra-09/prep.git",
   "recap_preference": "Give a brief correct-answer recap after each resolved question or follow-up. Maintain a consolidated main-question note with correct reasoning, corrections, detours, edge cases, and unresolved points; do not reveal pending answers.",
   "last_completed_summary": "summaries/BFSI-01.md",
