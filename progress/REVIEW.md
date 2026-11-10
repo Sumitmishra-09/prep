@@ -19,3 +19,5 @@ At the end of each week append: actual hours, questions independently solved, qu
 - Repair targets: exact-balance boundary; precise lock semantics; distinction between read stability and transaction correctness.
 - Support: prerequisite explanation and a shared-lock upgrade scenario. No score or independent pass yet.
 - Next: reason through the lock-upgrade timeline; return for retrieval on 2026-11-11. Other areas remain unassessed.
+
+- Second response revealed a specific gap: sequential waiting versus circular waiting during shared-to-exclusive lock upgrade. Instructor provides a wait trace; learner's revised acquisition approach is pending.

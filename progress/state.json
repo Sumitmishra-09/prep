@@ -9,16 +9,17 @@
   "active_question_id": "BFSI-01",
   "question_status": "in_progress",
   "highest_hint_used": "H3",
-  "pending_prompt": "Assume both transactions hold shared locks on the same account row until transaction end. Both read INR 1,000 and approve INR 700. What happens when both try to acquire the exclusive write lock needed to change that row?",
-  "next_action": "Assess reasoning about shared-lock compatibility and lock upgrade. If stuck, explain which transaction blocks which using a small wait timeline. Then explore a changed locking approach and its tradeoffs, and confirm the learner's database engine before applying exact isolation semantics. Do not provide the complete withdrawal implementation.",
+  "pending_prompt": "What could you change about the lock acquired before reading the balance so that both withdrawal transactions cannot enter this shared-lock upgrade situation together?",
+  "next_action": "Evaluate the learner's proposed acquisition change. If they suggest taking an exclusive row lock up front, trace waiting, commit, and the next observed balance under explicitly chosen database/isolation assumptions. If they propose releasing locks early, test whether the earlier balance check remains valid. Teach the missing prerequisite if needed; do not mark the explained deadlock as independently understood.",
   "last_session": "sessions/2026-11-10-lesson-01.md",
   "teaching_mode": "conversation-led visual problem solving with adaptive explanations, focused readings, prediction, guided debugging, correction, and corner-case exploration",
   "completed_diagnostic_questions": [],
   "due_review_ids": [],
   "known_gaps": [
     "Observed boundary omission: strict balance > withdrawal excludes withdrawing the exact available balance under the exercise assumptions.",
-    "Needs clarification: read-level lock type and scope; preventing nonrepeatable reads alone does not establish the entire withdrawal correctness guarantee."
+    "Needs clarification: read-level lock type and scope; preventing nonrepeatable reads alone does not establish the entire withdrawal correctness guarantee.",
+    "Observed misconception: learner expected two retained shared row locks to upgrade and write sequentially; needs the circular-wait model for lock-upgrade deadlock."
   ],
-  "assessment_note": "First BFSI-01 response recognized funds validation and concurrency risk and correctly associated repeatable read with nonrepeatable-read prevention. Exact-balance boundary and proposed concurrency mechanisms need refinement. No overall score or independent pass yet; other topics unassessed.",
+  "assessment_note": "Funds validation and awareness of concurrency demonstrated. Learner predicted sequential writes for the shared-lock upgrade scenario; instructor is correcting this with an explicit circular-wait trace. Guided attempt ongoing; no overall score or independent pass.",
   "remote_url": "https://github.com/Sumitmishra-09/prep.git"
 }

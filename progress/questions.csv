@@ -134,7 +134,7 @@ SEC-07,P1,unattempted,0,,,,,,
 SEC-08,P0,unattempted,0,,,,,,
 SEC-09,P1,unattempted,0,,,,,,
 SEC-10,P1,unattempted,0,,,,,,
-BFSI-01,P0,in_progress,1,,H3,2026-11-10,2026-11-11,,Recognized funds check and concurrent-request risk; proposed read lock or repeatable read. Strict > omits exact-balance case. Receiving explanation of isolation versus locking and a shared-lock upgrade scenario. No complete solution or score yet.
+BFSI-01,P0,in_progress,2,,H3,2026-11-10,2026-11-11,,Recognized funds validation/concurrency; strict > boundary corrected. Predicted sequential writes when both transactions retain shared locks and seek exclusive locks. Receiving circular-wait explanation; acquisition change pending. Attempts count substantive responses in this ongoing guided exercise; no independent pass.
 BFSI-02,P0,unattempted,0,,,,,,
 BFSI-03,P0,unattempted,0,,,,,,
 BFSI-04,P0,unattempted,0,,,,,,
