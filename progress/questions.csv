@@ -1,5 +1,5 @@
 id,priority,status,attempts,score,highest_hint,last_attempt,next_review,independent_pass_dates,evidence
-JAVA-01,P0,in_progress,5,,H3,2026-11-10,2026-11-11,,"Correctly predicts null when hashes match but references differ and equals is false; identifies both failed matching checks. Positive application after H3 teaching of hashing and bucket masking. Resume stable accountId-key design. No new runtime experiment, overall score, or independent pass."
+JAVA-01,P0,in_progress,6,,H3,2026-11-10,2026-11-11,,Reaches stable-key design: remove setter and initialize ID only in constructor. Valid if no other write path; instructor adds private final primitive ID and precise hash/equality wording. Final application: changing a field excluded from equals/hashCode. H3 support; no independent pass or overall score yet.
 JAVA-02,P0,unattempted,0,,,,,,
 JAVA-03,P0,unattempted,0,,,,,,
 JAVA-04,P0,unattempted,0,,,,,,

@@ -75,8 +75,18 @@ For distinct keys k1 and k2 that both return 17 from hashCode(), with k2.equals(
 
 This is correct application immediately after instruction, not independent mastery. No additional Java experiment was executed.
 
+## Stable accountId design: core fix reached
+
+The learner proposes removing the setter and setting the key only through the constructor. This addresses the original mutation problem if the primitive accountId has no other write path. Removing a setter alone does not prevent another class method from assigning the field.
+
+Instructor refinement: declare `private final int accountId;` and assign it in the constructor. Private limits direct access; final prevents reassignment after initialization in ordinary Java code. Keep the existing accountId-based equals/hashCode definitions consistent. See [JLS 17 final variables](https://docs.oracle.com/javase/specs/jls/se17/html/jls-4.html#jls-4.12.4).
+
+Precision: hashCode returns a stable integer for this fixed ID; equals returns a boolean for a comparison with another object. For two such keys, the same ID means equals true and equal hash codes. The learner's phrase "continue to return same value" is interpreted as stability, not as a claim that the two methods return the same type or that equals is always true.
+
+Interview recap of the resolved core: inspect fields used by equals/hashCode for changes after insertion. A node retains its insertion-time hash and key reference; changing the ID can make lookup miss the still-present entry. Keep the key's ID stable from construction, with hashing consistent with value equality. Constructor-only initialization was learner-proposed; the private-final enforcement was instructor-taught. No new implementation or runtime experiment was performed.
+
 ## Still open
 
-We want two AccountKey objects with the same accountId to represent the same key. What would you change in AccountKey so its accountId-based equality and hashing stay stable while it is stored in the map? Stable-key redesign remains incomplete.
+AccountKey now has a private final int accountId and a reassignable String status field. Both equals() and hashCode() use only accountId. After storing key -> ACTIVE, we change only status from OPEN to FROZEN. Will map.get(key) still find ACTIVE, and why? This application has not been answered; do not credit it as mastered.
 
 No overall score, independent pass, or mastery is recorded yet. The [lesson log](../sessions/2026-11-10-lesson-02.md) preserves the learner's actual response and distinguishes observed output from instructor explanation.

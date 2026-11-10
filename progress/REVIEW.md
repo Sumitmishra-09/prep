@@ -47,3 +47,5 @@ At the end of each week append: actual hours, questions independently solved, qu
 - JAVA-01 clarification: taught binary masking and where hashCode/equals participate, at learner request. No new attempt or mastery recorded. Check equal-hash unequal-key lookup next, then resume the stable-key design.
 
 - JAVA-01 fifth response correctly explains null for equal-hash unequal keys: both reference identity and equals fail. Positive supported application; stable-key design resumes. No independent pass or mastery.
+
+- JAVA-01 sixth response reaches constructor-only ID initialization as the core fix. Instructor adds private-final enforcement. Final check: mutation of a field excluded from equals/hashCode. Keep this assisted; no independent mastery yet.
