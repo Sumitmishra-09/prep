@@ -134,7 +134,7 @@ SEC-07,P1,unattempted,0,,,,,,
 SEC-08,P0,unattempted,0,,,,,,
 SEC-09,P1,unattempted,0,,,,,,
 SEC-10,P1,unattempted,0,,,,,,
-BFSI-01,P0,in_progress,4,,H3,2026-11-10,2026-11-11,,Proposed database row locking after multi-instance scenario and asked how to avoid deadlock. Receiving SELECT FOR UPDATE / READ COMMITTED mechanism explanation with transaction scope. Earlier equality and lock-upgrade gaps require retrieval. Rollback prediction pending; no independent pass.
+BFSI-01,P0,in_progress,5,,H3,2026-11-10,2026-11-11,,"Correctly predicted waiting locking read returns INR 1,000 after rollback, explaining undo and lock release without an additional hint. Earlier SELECT FOR UPDATE mechanism was taught. Two-row lock ordering pending; no independent whole-question pass."
 BFSI-02,P0,unattempted,0,,,,,,
 BFSI-03,P0,unattempted,0,,,,,,
 BFSI-04,P0,unattempted,0,,,,,,

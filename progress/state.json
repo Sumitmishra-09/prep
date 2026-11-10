@@ -9,8 +9,8 @@
   "active_question_id": "BFSI-01",
   "question_status": "in_progress",
   "highest_hint_used": "H3",
-  "pending_prompt": "Using PostgreSQL READ COMMITTED, A has the account row locked with SELECT FOR UPDATE and changes the balance from INR 1,000 to INR 300 without committing. B is waiting on SELECT FOR UPDATE for that row. If A now rolls back, what balance should B receive when its locking read completes, and why?",
-  "next_action": "Assess whether the learner connects rollback, lock release, and the value returned by the waiting locking read. If understood, examine a two-account transfer with reversed acquisition order to explore remaining deadlock risk. Later confirm the actual production database and apply Spring/JPA transaction boundaries. No independent pass until a fresh scenario is solved without teaching support.",
+  "pending_prompt": "Two transfers touch accounts 101 and 202. T1 transfers 101 to 202 and locks 101 first; T2 transfers 202 to 101 and locks 202 first. Each then requests the other row, retaining its first lock. What common lock-acquisition rule could both transfers follow to prevent this circular wait, regardless of transfer direction?",
+  "next_action": "Assess a consistent total order for acquiring the account locks. If learner proposes ordering by account ID, test the schedule for opposite-direction transfers and distinguish lock order from debit/credit direction. If stuck, ask which row both should try to lock first. Do not generalize this to eliminating all database deadlocks. Then request a short teach-back of the withdrawal protocol before moving on.",
   "last_session": "sessions/2026-11-10-lesson-01.md",
   "teaching_mode": "conversation-led visual problem solving with adaptive explanations, focused readings, prediction, guided debugging, correction, and corner-case exploration",
   "completed_diagnostic_questions": [],
@@ -20,6 +20,6 @@
     "Needs clarification: read-level lock type and scope; preventing nonrepeatable reads alone does not establish the entire withdrawal correctness guarantee.",
     "Observed misconception: learner expected two retained shared row locks to upgrade and write sequentially; needs the circular-wait model for lock-upgrade deadlock."
   ],
-  "assessment_note": "Learner proposed shared-database row locking for multi-instance coordination and explicitly asked how to avoid deadlock. Instructor teaches SELECT FOR UPDATE before making the balance decision, with PostgreSQL READ COMMITTED specified. This avoids the earlier single-row shared-lock upgrade cycle, not every possible deadlock. Guided rollback prediction pending; no score or independent pass.",
+  "assessment_note": "Learner correctly predicted INR 1,000 after rollback and explained undo plus lock release without another hint on this follow-up. This is positive evidence for rollback visibility within an assisted lesson, not independent mastery of the overall concurrency problem. Next: two-row lock-order scenario. No overall score yet.",
   "remote_url": "https://github.com/Sumitmishra-09/prep.git"
 }
