@@ -6,15 +6,16 @@
   "plan_weeks": 8,
   "hours_per_week": 27,
   "current_week": 1,
-  "active_question_id": "JAVA-01",
+  "active_question_id": "CON-01",
   "question_status": "in_progress",
-  "highest_hint_used": "H3",
-  "pending_prompt": "AccountKey now has a private final int accountId and a reassignable String status field. Both equals() and hashCode() use only accountId. After storing key -> ACTIVE, we change only status from OPEN to FROZEN. Will map.get(key) still find ACTIVE, and why?",
-  "next_action": "Assess this final application of stable equality/hash state versus unrelated mutable state. If correct, close JAVA-01 as assisted learning with an honest overall score and next-day retrieval, consolidate the recap, and select the next diagnostic. Do not prolong the current lesson with unrelated collection internals. If reasoning is unclear, teach the precise dependency before closing.",
-  "last_session": "sessions/2026-11-10-lesson-02.md",
+  "highest_hint_used": "H0",
+  "pending_prompt": "In Java 17, a shared Counter object has int value = 0 and increment() executes value++. Two worker threads each call increment() exactly once, without synchronization. The main thread successfully joins both workers before reading value. What final values are possible, and how could the threads produce them?",
+  "next_action": "Wait for the learner prediction and reasoning before revealing counter outcomes or fixes. Ask one question at a time; teach increment mechanics if needed. Any experiment must follow a prediction. CON-01 is unassessed with zero responses. JAVA-01 is completed as assisted learning, with retrieval on 2026-11-11.",
+  "last_session": "sessions/2026-11-10-lesson-03.md",
   "teaching_mode": "conversation-led visual problem solving with adaptive explanations, focused readings, prediction, guided debugging, correction, and corner-case exploration",
   "completed_diagnostic_questions": [
-    "BFSI-01"
+    "BFSI-01",
+    "JAVA-01"
   ],
   "due_review_ids": [],
   "known_gaps": [
@@ -25,9 +26,9 @@
     "JAVA-01 observed misconception: attributed same-reference lookup failure to equals with unchanged hash/bucket. In the supplied class hash changes 101 to 202, while self-equality remains true; corrected with a runnable probe and needs later retrieval.",
     "JAVA-01: different hashes were assumed to imply different buckets; taught the 1/17 same-bucket example and stored-hash screening. Needs later retrieval."
   ],
-  "assessment_note": "Learner reaches the core fix: remove the ID setter and initialize only in the constructor. Valid if the primitive ID has no other write path. Instructor adds private final int to enforce it and clarifies hash integer versus equals boolean. This establishes the design with H3 support; a non-key-field mutation application is pending. No new runtime experiment or independent pass.",
+  "assessment_note": "JAVA-01 completed as assisted learning: 2/4 with H3 support. Learner correctly predicts lookup surviving a status-only change; refine unchanged methods to unchanged equality/hash inputs. Core ID design reached and supported applications correct, but causal model required teaching and independent retrieval remains pending. CON-01 has not been attempted.",
   "remote_url": "https://github.com/Sumitmishra-09/prep.git",
   "recap_preference": "Give a brief correct-answer recap after each resolved question or follow-up. Maintain a consolidated main-question note with correct reasoning, corrections, detours, edge cases, and unresolved points; do not reveal pending answers.",
-  "last_completed_summary": "summaries/BFSI-01.md",
-  "current_summary": "summaries/JAVA-01.md"
+  "last_completed_summary": "summaries/JAVA-01.md",
+  "current_summary": "summaries/CON-01.md"
 }

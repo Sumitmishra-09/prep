@@ -1,5 +1,5 @@
 id,priority,status,attempts,score,highest_hint,last_attempt,next_review,independent_pass_dates,evidence
-JAVA-01,P0,in_progress,6,,H3,2026-11-10,2026-11-11,,Reaches stable-key design: remove setter and initialize ID only in constructor. Valid if no other write path; instructor adds private final primitive ID and precise hash/equality wording. Final application: changing a field excluded from equals/hashCode. H3 support; no independent pass or overall score yet.
+JAVA-01,P0,learning,7,2,H3,2026-11-10,2026-11-11,,Guided diagnostic completed. Reaches constructor-only stable ID and correctly applies unequal-key and non-key-field cases after teaching. Initial mutation/hash/bucket/equality confusion required H3 explanation and instructor probe. Refine unchanged methods to unchanged inputs. Score 2 assisted; no independent pass; next-day retrieval.
 JAVA-02,P0,unattempted,0,,,,,,
 JAVA-03,P0,unattempted,0,,,,,,
 JAVA-04,P0,unattempted,0,,,,,,
@@ -9,7 +9,7 @@ JAVA-07,P1,unattempted,0,,,,,,
 JAVA-08,P1,unattempted,0,,,,,,
 JAVA-09,P1,unattempted,0,,,,,,
 JAVA-10,P1,unattempted,0,,,,,,
-CON-01,P0,unattempted,0,,,,,,
+CON-01,P0,in_progress,0,,H0,,,,Initial shared-counter prediction presented. Zero learner responses; no score or experiment. Two workers increment once each and main joins both before reading.
 CON-02,P0,unattempted,0,,,,,,
 CON-03,P0,unattempted,0,,,,,,
 CON-04,P0,unattempted,0,,,,,,

@@ -1,6 +1,6 @@
 # Weekly review
 
-First guided technical assessment is in progress; no question mastered yet. Initial week: 1.
+Initial diagnostic is in progress: BFSI-01 and JAVA-01 completed as assisted learning; no question mastered yet. Current question: CON-01. Initial week: 1.
 
 At the end of each week append: actual hours, questions independently solved, questions requiring hints, due retrievals, strongest evidence, two highest-priority gaps, mock results, and next week's reallocation. Preserve a 27-hour budget. Do not report question coverage as mastery.
 
@@ -49,3 +49,5 @@ At the end of each week append: actual hours, questions independently solved, qu
 - JAVA-01 fifth response correctly explains null for equal-hash unequal keys: both reference identity and equals fail. Positive supported application; stable-key design resumes. No independent pass or mastery.
 
 - JAVA-01 sixth response reaches constructor-only ID initialization as the core fix. Instructor adds private-final enforcement. Final check: mutation of a field excluded from equals/hashCode. Keep this assisted; no independent mastery yet.
+
+- JAVA-01 completed after seventh response: correct status-only mutation prediction; refine unchanged methods to unchanged relevant inputs. Overall 2/4, H3, learning; retrieval 2026-11-11. Recap consolidated. CON-01 starts with zero responses, H0 and no score; no counter experiment executed.

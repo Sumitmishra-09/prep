@@ -1,6 +1,6 @@
 # JAVA-01: a HashMap lookup stops finding an entry
 
-Status: **partial recap; question in progress**. Updated 2026-11-10. Java 17 is the reference version. An instructor-authored experiment has now been executed after the learner's prediction.
+Status: **guided diagnostic completed; assisted learning, not mastery**. Updated 2026-11-10. Score 2/4, highest support H3; retrieval due 2026-11-11. Java 17 is the reference version. One instructor-authored mutation experiment was executed after the learner's prediction; later variations were discussed without execution.
 
 ## Established so far
 
@@ -85,8 +85,23 @@ Precision: hashCode returns a stable integer for this fixed ID; equals returns a
 
 Interview recap of the resolved core: inspect fields used by equals/hashCode for changes after insertion. A node retains its insertion-time hash and key reference; changing the ID can make lookup miss the still-present entry. Keep the key's ID stable from construction, with hashing consistent with value equality. Constructor-only initialization was learner-proposed; the private-final enforcement was instructor-taught. No new implementation or runtime experiment was performed.
 
-## Still open
+## Non-key-field mutation: resolved follow-up
 
-AccountKey now has a private final int accountId and a reassignable String status field. Both equals() and hashCode() use only accountId. After storing key -> ACTIVE, we change only status from OPEN to FROZEN. Will map.get(key) still find ACTIVE, and why? This application has not been answered; do not credit it as mastered.
+The learner correctly predicts that changing status from OPEN to FROZEN leaves get(key) returning ACTIVE, because equals/hashCode depend only on the unchanged accountId. Their wording was "2 menthods are unchanged". Precision: the relevant inputs are unchanged; method implementations also stayed unchanged in the original broken example, where accountId changed. In the same-reference lookup, the stored hash matches and reference identity establishes the match without calling equals.
 
-No overall score, independent pass, or mastery is recorded yet. The [lesson log](../sessions/2026-11-10-lesson-02.md) preserves the learner's actual response and distinguishes observed output from instructor explanation.
+The general rule is stability of the data used for hashing and equality while a key is stored. An unrelated mutable field does not by itself break this lookup. This does not establish general thread safety or recommend mutable domain entities as keys.
+
+## Interview-ready recap
+
+I would inspect a missing HashMap key's equals/hashCode implementation and whether their input fields changed after insertion. OpenJDK stores the insertion-time spread hash and the key reference. Mutating the account ID can change the lookup hash while the entry retains its old hash, so an entry can remain iterable but no longer be found through get. Equal keys must have equal hashes; sharing a bucket or hash does not establish equality. In this example I would set the primitive account ID only during construction and make it private final, while preserving accountId-based equals/hashCode. Mutating status is harmless to lookup when neither method uses it.
+
+## Assessment and next retrieval
+
+- Correctness: core fix reached; equal-hash unequal-key and non-key-field outcomes correctly explained after teaching.
+- Reasoning: earlier hash, bucket, and self-equality confusion required an executed instructor demonstration and explanations. Constructor-only initialization was learner-proposed; final-field enforcement was taught.
+- Edge cases: supported application demonstrated; learner-generated corner cases and independent transfer remain unassessed.
+- Communication: predictions are concise; refine "methods unchanged" to "hash/equality inputs unchanged".
+- Overall: 2/4, H3, learning. No independent pass or mastery. No study duration invented.
+- Retrieval on 2026-11-11: explain the lookup mechanism and stable-key design in 60-120 seconds without notes, then reason through a fresh variant. Revisit the distinction between hash and bucket; binary-mask calculation has not been independently assessed. Mutable referenced fields and defensive copying remain future coverage, not demonstrated knowledge.
+
+The [lesson log](../sessions/2026-11-10-lesson-02.md) preserves responses and teaching support. Next diagnostic: CON-01, initially unassessed.
