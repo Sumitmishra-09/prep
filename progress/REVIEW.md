@@ -21,3 +21,5 @@ At the end of each week append: actual hours, questions independently solved, qu
 - Next: reason through the lock-upgrade timeline; return for retrieval on 2026-11-11. Other areas remain unassessed.
 
 - Second response revealed a specific gap: sequential waiting versus circular waiting during shared-to-exclusive lock upgrade. Instructor provides a wait trace; learner's revised acquisition approach is pending.
+
+- Third response proposed synchronized mutual exclusion. A valid local direction under shared-monitor/transaction-scope conditions; multi-instance behavior remains to be assessed.

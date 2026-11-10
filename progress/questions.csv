@@ -134,7 +134,7 @@ SEC-07,P1,unattempted,0,,,,,,
 SEC-08,P0,unattempted,0,,,,,,
 SEC-09,P1,unattempted,0,,,,,,
 SEC-10,P1,unattempted,0,,,,,,
-BFSI-01,P0,in_progress,2,,H3,2026-11-10,2026-11-11,,Recognized funds validation/concurrency; strict > boundary corrected. Predicted sequential writes when both transactions retain shared locks and seek exclusive locks. Receiving circular-wait explanation; acquisition change pending. Attempts count substantive responses in this ongoing guided exercise; no independent pass.
+BFSI-01,P0,in_progress,3,,H3,2026-11-10,2026-11-11,,Funds check/concurrency awareness demonstrated; exact-balance boundary and lock-upgrade deadlock explained. Proposed synchronized block: conditionally valid same-monitor local mutual exclusion. Two-JVM scope probe pending; do not infer this is a known misconception. No independent pass.
 BFSI-02,P0,unattempted,0,,,,,,
 BFSI-03,P0,unattempted,0,,,,,,
 BFSI-04,P0,unattempted,0,,,,,,
