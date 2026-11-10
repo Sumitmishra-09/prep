@@ -1,0 +1,22 @@
+# Local secrets and private material
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*
+private/
+
+# Build and editor outputs
+target/
+build/
+out/
+*.class
+*.log
+__pycache__/
+.venv/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+.claude/settings.local.json
