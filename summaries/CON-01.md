@@ -23,8 +23,18 @@ Both calls execute, but the second write stores the same result rather than addi
 
 Reference: [Oracle thread interference tutorial](https://docs.oracle.com/javase/tutorial/essential/concurrency/interfere.html). The tutorial targets JDK 8; this basic increment behavior also applies to our Java 17 example.
 
+## Volatile-only increment: resolved follow-up
+
+The learner correctly rejects a guarantee of 2 after changing only the field to volatile. Their reason is correct: both threads may read the initial 0 before either writes 1. They also associate volatile with visibility.
+
+Instructor precision: visibility is a guarantee under Java's ordering rules, not merely a chance of observing a new value. A volatile read observes the most recent preceding write to the same field in synchronization order, and a volatile write happens-before subsequent reads of that field. It does not refresh a value already read or make the whole read/add/write operation atomic.
+
+The existing read-0/read-0/write-1/write-1 timeline remains valid with volatile: 0 is the current value at both reads. This establishes why better visibility alone does not solve the lost update. The answer was reasoned about, not executed.
+
+Reference: [JLS 17 memory-model rules](https://docs.oracle.com/javase/specs/jls/se17/html/jls-17.html#jls-17.4.5), including synchronization-order consistency in section 17.4.7.
+
 ## Pending
 
-A colleague changes only the shared field to volatile int value = 0, leaving increment() as value++ and joining both workers before reading. Does this guarantee a final value of 2? Explain using the two-thread timeline.
+How would you change this shared counter so that, after both threads finish, the value is always 2? Choose one approach and explain why it prevents the read-0/read-0/write-1/write-1 sequence.
 
-The changed-scenario answer and fixes are not yet supplied. Volatile knowledge is unassessed. See [lesson 3](../sessions/2026-11-10-lesson-03.md).
+A concrete fix has not yet been proposed or implemented. See [lesson 3](../sessions/2026-11-10-lesson-03.md).

@@ -55,3 +55,5 @@ At the end of each week append: actual hours, questions independently solved, qu
 - CON-01 first response correctly predicts 1 or 2 at H0. Next: explain a concrete ordering ending at 1 (H1 focus on reads/writes). No misconception, overall score, independent pass, or executed experiment recorded.
 
 - CON-01 second response correctly explains both threads reading 0 and writing 1. Lost-update timeline established with H1 focus; next scenario changes only the field to volatile. Volatile understanding remains unassessed; no experiment or independent pass.
+
+- CON-01 third response correctly rejects volatile-only increment and explains why both reads can see 0. Visibility wording refined to a guarantee under ordering rules. Next: learner proposes one concrete fix. H1 remains; no new misconception, experiment, or independent pass.

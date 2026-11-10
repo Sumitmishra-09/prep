@@ -9,8 +9,8 @@
   "active_question_id": "CON-01",
   "question_status": "in_progress",
   "highest_hint_used": "H1",
-  "pending_prompt": "A colleague changes only the shared field to volatile int value = 0, leaving increment() as value++ and joining both workers before reading. Does this guarantee a final value of 2? Explain using the two-thread timeline.",
-  "next_action": "Assess the volatile-only proposal prediction without supplying its answer in advance. Learner has correctly explained the original lost-update timeline with H1 focus. Volatile semantics are unassessed; teach them if the learner is unsure or reveals a misconception, then ask one application. No experiment has been executed; do not introduce multiple fixes at once.",
+  "pending_prompt": "How would you change this shared counter so that, after both threads finish, the value is always 2? Choose one approach and explain why it prevents the read-0/read-0/write-1/write-1 sequence.",
+  "next_action": "Assess one learner-proposed counter fix and its scope. The learner correctly rejects volatile-only increment using the existing lost-update timeline. Do not supply multiple fixes or implementation before the attempt. Check that the proposed mechanism covers the complete increment and relevant shared state. If appropriate, ask one changed constraint or an experiment design after establishing the fix.",
   "last_session": "sessions/2026-11-10-lesson-03.md",
   "teaching_mode": "conversation-led visual problem solving with adaptive explanations, focused readings, prediction, guided debugging, correction, and corner-case exploration",
   "completed_diagnostic_questions": [
@@ -26,7 +26,7 @@
     "JAVA-01 observed misconception: attributed same-reference lookup failure to equals with unchanged hash/bucket. In the supplied class hash changes 101 to 202, while self-equality remains true; corrected with a runnable probe and needs later retrieval.",
     "JAVA-01: different hashes were assumed to imply different buckets; taught the 1/17 same-bucket example and stored-hash screening. Needs later retrieval."
   ],
-  "assessment_note": "CON-01 second response correctly explains both threads reading 0 and writing 1. Initial outcomes and concrete lost-update reasoning are supported by learner evidence; H1 remains. Instructor names lost update and non-atomic read/modify/write behavior. Volatile changed-constraint prediction pending; no score, independent pass, or new gap recorded.",
+  "assessment_note": "CON-01 third response correctly rejects volatile as sufficient for value++ and explains both reads can see 0 before either write. Learner associates volatile with visibility. Instructor refines can see latest into the visibility/ordering guarantee for subsequent volatile reads; already-read values are not refreshed. H1 remains; this is a wording refinement, not evidence of a new misconception. Correctness fix pending; no runtime experiment or overall score.",
   "remote_url": "https://github.com/Sumitmishra-09/prep.git",
   "recap_preference": "Give a brief correct-answer recap after each resolved question or follow-up. Maintain a consolidated main-question note with correct reasoning, corrections, detours, edge cases, and unresolved points; do not reveal pending answers.",
   "last_completed_summary": "summaries/JAVA-01.md",
