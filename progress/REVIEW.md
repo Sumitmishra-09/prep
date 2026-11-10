@@ -59,3 +59,5 @@ At the end of each week append: actual hours, questions independently solved, qu
 - CON-01 third response correctly rejects volatile-only increment and explains why both reads can see 0. Visibility wording refined to a guarantee under ordering rules. Next: learner proposes one concrete fix. H1 remains; no new misconception, experiment, or independent pass.
 
 - CON-01 fourth response selects synchronized increment but expects a possible concurrent entry requiring another value lock. Taught receiver-monitor acquisition before method-body execution; H3 support, retrieval due 2026-11-11. Next: shared static field accessed through different receiver instances. No counter experiment or independent pass.
+
+- CON-01 fifth response identifies static storage and suggests making the method static too. Credit this repair; clarify original instance-method monitors versus Counter.class for the repaired static method. Final mixed-monitor explanation pending; H3 support, no experiment or independent pass.

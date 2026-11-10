@@ -9,8 +9,8 @@
   "active_question_id": "CON-01",
   "question_status": "in_progress",
   "highest_hint_used": "H3",
-  "pending_prompt": "Change the counter field to static int value = 0, but keep increment() as an instance synchronized method. T1 calls increment() once on counterA and T2 calls it once on a different instance counterB. Main joins both workers. Is a final value of 2 still guaranteed, and why?",
-  "next_action": "Assess the changed scenario with one shared static field but two receiver instances. The learner chose synchronized increment correctly for one shared object; instructor taught monitor acquisition before the method body and why no second field lock is needed. Do not reveal the new scenario outcome or repair before an attempt. If understanding is demonstrated, seek a short synthesis and close this diagnostic without expanding into every concurrency API.",
+  "pending_prompt": "In Counter, static synchronized void increment() executes value++, while instance synchronized void reset() executes value = 0; both access the same static int value. T1 calls Counter.increment() and T2 calls counterA.reset(). Can the two method bodies execute at the same time? Explain in your own words which object each call locks.",
+  "next_action": "Assess the mixed static/instance monitor explanation as the final application and short synthesis. The learner identified making increment static as the repair; the distinction between the original instance method and repaired static method was taught. If reasoning is correct, consolidate CON-01 as assisted learning with an honest score and next-day retrieval and move to SPR-03. If uncertain, explain monitor identity briefly rather than adding further API branches. No counter experiment has been executed.",
   "last_session": "sessions/2026-11-10-lesson-03.md",
   "teaching_mode": "conversation-led visual problem solving with adaptive explanations, focused readings, prediction, guided debugging, correction, and corner-case exploration",
   "completed_diagnostic_questions": [
@@ -27,7 +27,7 @@
     "JAVA-01: different hashes were assumed to imply different buckets; taught the 1/17 same-bucket example and stored-hash screening. Needs later retrieval.",
     "CON-01 observed misconception: proposed an extra value lock in case both threads enter the same synchronized instance method concurrently on the shared receiver. Taught acquisition of the receiver monitor before body execution; changed-instance application pending."
   ],
-  "assessment_note": "CON-01 fourth response chooses the correct synchronized method but adds another lock on the value in case both threads enter. Observed gap: two different threads cannot enter this synchronized method body concurrently on the same receiver in this example. Instructor teaches the object monitor, lock acquisition before body, and primitive int not being a lock object. Support rises to H3; no implementation executed, overall score, or independent pass.",
+  "assessment_note": "CON-01 fifth response correctly identifies class-associated static storage and ends by suggesting the method should also be static. Distinguish the original code (no guarantee across different receiver monitors) from their proposed static synchronized repair (common Counter.class monitor). Do not dismiss the self-correction or credit the original guarantee as correct. Monitor-selection explanation supplied at H3; mixed-monitor synthesis pending. No overall score or independent pass.",
   "remote_url": "https://github.com/Sumitmishra-09/prep.git",
   "recap_preference": "Give a brief correct-answer recap after each resolved question or follow-up. Maintain a consolidated main-question note with correct reasoning, corrections, detours, edge cases, and unresolved points; do not reveal pending answers.",
   "last_completed_summary": "summaries/JAVA-01.md",

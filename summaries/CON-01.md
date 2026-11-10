@@ -53,8 +53,31 @@ References: [Oracle synchronized methods](https://docs.oracle.com/javase/tutoria
 
 Support is H3 after the monitor explanation. The correct method choice was learner-proposed; its precise locking behavior was taught. Review due 2026-11-11; no overall score or independent pass yet.
 
+## Static field, different receiver instances: resolved follow-up
+
+The learner correctly recognizes that the static field is shared across instances of this class and ends by proposing that the method also be static. The instructor distinguishes the original code from this proposed correction.
+
+| Method used | T1 locks | T2 locks | Same monitor? |
+|---|---|---|---|
+| Instance synchronized increment on counterA / counterB | counterA | counterB | No |
+| Static synchronized increment declared in Counter | Counter.class | Counter.class | Yes |
+
+The original method is still an instance method even though it accesses a static field. Different receiver monitors do not exclude each other, so both increments can overlap and lose an update; 2 is not guaranteed. Static storage and class initialization do not serialize later modifications.
+
+The learner's proposed repair is valid for the given shared counter:
+
+```java
+static synchronized void increment() {
+    value++;
+}
+```
+
+Both calls acquire the monitor of the Counter Class object. With the original assumptions of two completed increments from 0 and no other writers, final value is 2. This guarantee comes from the common monitor protecting the whole increment, not from the field being static alone. The method declaration chooses the implicit monitor; the fields used in the body do not choose it.
+
+Reference: [JLS 17.1](https://docs.oracle.com/javase/specs/jls/se17/html/jls-17.html#jls-17.1). The snippet is explanatory, not executed. H3 support remains; no independent mastery is inferred from the learner's proposed fix.
+
 ## Pending
 
-Change the counter field to static int value = 0, but keep increment() as an instance synchronized method. T1 calls increment() once on counterA and T2 calls it once on a different instance counterB. Main joins both workers. Is a final value of 2 still guaranteed, and why?
+In Counter, static synchronized void increment() executes value++, while instance synchronized void reset() executes value = 0; both access the same static int value. T1 calls Counter.increment() and T2 calls counterA.reset(). Can the two method bodies execute at the same time? Explain in your own words which object each call locks.
 
-The changed-scenario outcome and its repair have not been supplied. See [lesson 3](../sessions/2026-11-10-lesson-03.md).
+The mixed-method scenario has not been answered. See [lesson 3](../sessions/2026-11-10-lesson-03.md).
