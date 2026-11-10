@@ -26,7 +26,7 @@ Claude instructions: [CLAUDE.md](CLAUDE.md). Codex instructions: [AGENTS.md](AGE
 | [Role strategy](career/STRATEGY.md) | Role selection, project stories, applications, and compensation |
 | [Current state](progress/state.json) | Exact checkpoint for the next instructor |
 | [Question tracker](progress/questions.csv) | Attempts, hint use, scores, and next review dates |
-| [Current question recap](summaries/BFSI-01.md) | Correct answers covered so far, corrections, detours, and pending points |
+| [Withdrawal question recap](summaries/BFSI-01.md) | Correct answers, corrections, detours, and remaining review points from the first guided question |
 | [Git sync guide](SYNC.md) | Continue from another laptop |
 
 ## How lessons work

@@ -134,7 +134,7 @@ SEC-07,P1,unattempted,0,,,,,,
 SEC-08,P0,unattempted,0,,,,,,
 SEC-09,P1,unattempted,0,,,,,,
 SEC-10,P1,unattempted,0,,,,,,
-BFSI-01,P0,in_progress,7,,H3,2026-11-10,2026-11-11,,"Correctly identifies row locking by account ID in a brief synthesis; earlier rollback and lock-order reasoning correct. Timing/mode/transaction lifetime and final second-withdrawal decision omitted, not proven wrong. Focused committed-balance outcome probe pending; no whole-question independent pass."
+BFSI-01,P0,learning,8,2,H3,2026-11-10,2026-11-11,,"Guided diagnostic completed (H3). Correct rollback prediction, lock ordering, and rejected second debit. Corrected strict >, lock-upgrade deadlock, repeated-query assumption, and automatic rollback on exception/exit. Original unsafe timeline not independently reconstructed; fresh retrieval due. No independent pass."
 BFSI-02,P0,unattempted,0,,,,,,
 BFSI-03,P0,unattempted,0,,,,,,
 BFSI-04,P0,unattempted,0,,,,,,

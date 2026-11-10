@@ -6,22 +6,25 @@
   "plan_weeks": 8,
   "hours_per_week": 27,
   "current_week": 1,
-  "active_question_id": "BFSI-01",
-  "question_status": "in_progress",
-  "highest_hint_used": "H3",
-  "pending_prompt": "In our PostgreSQL READ COMMITTED example, both requests use SELECT FOR UPDATE on the same account row in their own transactions. The first withdraws INR 700 from INR 1,000 and commits. What happens to the second INR 700 withdrawal when its waiting locking read completes? Explain using the balance it receives.",
-  "next_action": "Assess the expected remaining balance and insufficient-funds decision, including using the value returned after acquiring the lock. If correct, close the guided BFSI-01 diagnostic with a concise model-answer/detour recap and evidence-based assisted score, keep spaced retrieval due, and proceed to JAVA-01. If a gap remains, teach that specific point. Do not demand repeated full recitations of already established content or count brevity as a proven misconception.",
-  "last_session": "sessions/2026-11-10-lesson-01.md",
+  "active_question_id": "JAVA-01",
+  "question_status": "awaiting_first_attempt",
+  "highest_hint_used": "H0",
+  "pending_prompt": "A HashMap stores a custom AccountKey mapped to ACTIVE. Later, map.get(key) returns null using the same key variable. No entry was removed or cleared, and no other thread touched the map. What would you investigate first?",
+  "next_action": "Wait for the learner's hypothesis. Establish what they know about key equality, hashing, and key mutation without naming the cause before their attempt. Teach missing prerequisites with a small object/bucket sketch if needed. BFSI-01 is complete as assisted learning, not mastery; review its fresh no-lock interleaving and transaction-completion details later.",
+  "last_session": "sessions/2026-11-10-lesson-02.md",
   "teaching_mode": "conversation-led visual problem solving with adaptive explanations, focused readings, prediction, guided debugging, correction, and corner-case exploration",
-  "completed_diagnostic_questions": [],
+  "completed_diagnostic_questions": [
+    "BFSI-01"
+  ],
   "due_review_ids": [],
   "known_gaps": [
     "Observed boundary omission: strict balance > withdrawal excludes withdrawing the exact available balance under the exercise assumptions.",
     "Needs clarification: read-level lock type and scope; preventing nonrepeatable reads alone does not establish the entire withdrawal correctness guarantee.",
-    "Observed misconception: learner expected two retained shared row locks to upgrade and write sequentially; needs the circular-wait model for lock-upgrade deadlock."
+    "Observed misconception: learner expected two retained shared row locks to upgrade and write sequentially; needs the circular-wait model for lock-upgrade deadlock.",
+    "Review needed: a waiting SELECT FOR UPDATE resumes without a new application query; normal return/block exit is not automatic rollback and Spring exception rollback depends on configured rules."
   ],
-  "assessment_note": "Learner's synthesis names row-level locking by account ID, a relevant mechanism. The brief response omits timing, lock mode, transaction lifetime, and the second request's business decision; these are unexpressed, not proven misconceptions. One focused outcome probe remains before closing the guided question.",
+  "assessment_note": "BFSI-01 completed with assisted-learning score 2/4, highest support H3. Learner correctly predicted rollback visibility, proposed consistent ordering, and rejected the second withdrawal after the committed debit. Corrected statement-resumption and rollback assumptions. No independent pass or mastery; retrieval due 2026-11-11. JAVA-01 unattempted.",
   "remote_url": "https://github.com/Sumitmishra-09/prep.git",
-  "current_summary": "summaries/BFSI-01.md",
-  "recap_preference": "Give a brief correct-answer recap after each resolved question or follow-up. Maintain a consolidated main-question note with correct reasoning, corrections, detours, edge cases, and unresolved points; do not reveal pending answers."
+  "recap_preference": "Give a brief correct-answer recap after each resolved question or follow-up. Maintain a consolidated main-question note with correct reasoning, corrections, detours, edge cases, and unresolved points; do not reveal pending answers.",
+  "last_completed_summary": "summaries/BFSI-01.md"
 }
