@@ -45,3 +45,5 @@ At the end of each week append: actual hours, questions independently solved, qu
 - JAVA-01 fourth response correctly predicts the distinct-equal-key lookup failure. Corrected different-hash versus different-bucket overgeneralization using stored-hash screening. Next: stable accountId value-key design; no new runtime experiment or independent pass.
 
 - JAVA-01 clarification: taught binary masking and where hashCode/equals participate, at learner request. No new attempt or mastery recorded. Check equal-hash unequal-key lookup next, then resume the stable-key design.
+
+- JAVA-01 fifth response correctly explains null for equal-hash unequal keys: both reference identity and equals fail. Positive supported application; stable-key design resumes. No independent pass or mastery.

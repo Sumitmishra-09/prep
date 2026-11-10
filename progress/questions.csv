@@ -1,5 +1,5 @@
 id,priority,status,attempts,score,highest_hint,last_attempt,next_review,independent_pass_dates,evidence
-JAVA-01,P0,in_progress,4,,H3,2026-11-10,2026-11-11,,Correctly predicted null for explicitly different hashes; different-hash versus different-bucket distinction taught. Requests binary-mask explanation and hashCode/equals flow. Worked explanation supplied; equal-hash unequal-key prediction pending. Stable-key design parked. Clarification is not a new attempt; H3; no independent pass.
+JAVA-01,P0,in_progress,5,,H3,2026-11-10,2026-11-11,,"Correctly predicts null when hashes match but references differ and equals is false; identifies both failed matching checks. Positive application after H3 teaching of hashing and bucket masking. Resume stable accountId-key design. No new runtime experiment, overall score, or independent pass."
 JAVA-02,P0,unattempted,0,,,,,,
 JAVA-03,P0,unattempted,0,,,,,,
 JAVA-04,P0,unattempted,0,,,,,,

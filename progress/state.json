@@ -9,8 +9,8 @@
   "active_question_id": "JAVA-01",
   "question_status": "in_progress",
   "highest_hint_used": "H3",
-  "pending_prompt": "Two different AccountKey objects k1 and k2 both return 17 from hashCode(), but k2.equals(k1) is false. After map.put(k1, \"ACTIVE\"), what will map.get(k2) return, and which check decides it?",
-  "next_action": "Assess the equal-hash but unequal-key lookup prediction after the requested binary-mask and lookup-flow explanation. Explain further if needed. Then resume the parked question: We want two AccountKey objects with the same accountId to represent the same key. What would you change in AccountKey so its accountId-based equality and hashing stay stable while it is stored in the map? Do not infer mastery from the worked explanation.",
+  "pending_prompt": "We want two AccountKey objects with the same accountId to represent the same key. How would you design AccountKey so its accountId-based equality and hashing remain stable while it is stored in the map?",
+  "next_action": "Assess the stable accountId-based key design. The learner correctly explained the equal-hash unequal-key lookup after teaching; no need to repeat that probe. If immutability is unfamiliar, teach it with a brief analogous example. Once the design is established, use one fresh application or synthesis to close the guided diagnostic without claiming independent mastery.",
   "last_session": "sessions/2026-11-10-lesson-02.md",
   "teaching_mode": "conversation-led visual problem solving with adaptive explanations, focused readings, prediction, guided debugging, correction, and corner-case exploration",
   "completed_diagnostic_questions": [
@@ -25,7 +25,7 @@
     "JAVA-01 observed misconception: attributed same-reference lookup failure to equals with unchanged hash/bucket. In the supplied class hash changes 101 to 202, while self-equality remains true; corrected with a runnable probe and needs later retrieval.",
     "JAVA-01: different hashes were assumed to imply different buckets; taught the 1/17 same-bucket example and stored-hash screening. Needs later retrieval."
   ],
-  "assessment_note": "Learner requests explanation of hash & 15 and then where hashCode and equals participate. Teach binary AND, masking, hash spreading, insertion-time metadata, and lookup hash/identity/equality screening. This is a clarification request, not another assessed attempt. Attempts remain 4; H3; no score, new Java execution, or independent pass.",
+  "assessment_note": "Correctly predicts null for equal-hash distinct keys with equals false, explicitly citing both failed identity and equality checks. Positive application after H3 instruction; not an independent diagnostic pass. Stable-key design remains open; no new runtime experiment or overall score.",
   "remote_url": "https://github.com/Sumitmishra-09/prep.git",
   "recap_preference": "Give a brief correct-answer recap after each resolved question or follow-up. Maintain a consolidated main-question note with correct reasoning, corrections, detours, edge cases, and unresolved points; do not reveal pending answers.",
   "last_completed_summary": "summaries/BFSI-01.md",

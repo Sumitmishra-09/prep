@@ -50,7 +50,7 @@ Recap: hash stability within one object is insufficient when separate objects ca
 
 ## Requested detour: bit masking and the lookup flow
 
-The learner asked how hashes 1 and 17 both select bucket 1, then where hashCode() and equals() enter the process. The explanation below is instructor-taught; understanding has not yet been checked.
+The learner asked how hashes 1 and 17 both select bucket 1, then where hashCode() and equals() enter the process. The explanation below is instructor-taught. The learner subsequently applied the identity/equality matching steps correctly in the follow-up below; binary masking has not been separately assessed.
 
 With 16 buckets, valid indices are 0 through 15. OpenJDK 17 uses `(capacity - 1) & spreadHash`. Its allocated table length is a power of two. Integer `&` is bitwise AND: an output bit is 1 only when both input bits are 1. Only five bits are shown here; omitted leading bits are zero.
 
@@ -69,10 +69,14 @@ On put, matching an existing key replaces its value; otherwise a new entry is st
 
 Source: [OpenJDK 17 HashMap](https://github.com/openjdk/jdk17u/blob/master/src/java.base/share/classes/java/util/HashMap.java). This was a source-checked worked explanation, not a new Java experiment.
 
+## Equal hashes, unequal keys: resolved follow-up
+
+For distinct keys k1 and k2 that both return 17 from hashCode(), with k2.equals(k1) false, a map containing only k1 -> ACTIVE returns null for get(k2). The learner correctly explains that neither key-reference identity nor equals succeeds. Matching hashes allow the candidate to be considered; they do not establish a key match. After the hash match, either reference identity OR equals can establish a match; both need not be true.
+
+This is correct application immediately after instruction, not independent mastery. No additional Java experiment was executed.
+
 ## Still open
 
-Immediate check: Two different AccountKey objects k1 and k2 both return 17 from hashCode(), but k2.equals(k1) is false. After map.put(k1, "ACTIVE"), what will map.get(k2) return, and which check decides it?
-
-Parked design question: We want two AccountKey objects with the same accountId to represent the same key. What would you change in AccountKey so its accountId-based equality and hashing stay stable while it is stored in the map? Stable-key redesign remains incomplete.
+We want two AccountKey objects with the same accountId to represent the same key. What would you change in AccountKey so its accountId-based equality and hashing stay stable while it is stored in the map? Stable-key redesign remains incomplete.
 
 No overall score, independent pass, or mastery is recorded yet. The [lesson log](../sessions/2026-11-10-lesson-02.md) preserves the learner's actual response and distinguishes observed output from instructor explanation.
