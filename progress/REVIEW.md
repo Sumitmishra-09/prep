@@ -29,3 +29,5 @@ At the end of each week append: actual hours, questions independently solved, qu
 - Fifth response correctly predicts rollback visibility (INR 1,000) and explains undo plus lock release without a further hint. Positive local evidence; overall concurrency mastery still unestablished. Next challenge: consistent lock ordering for two-account transfers.
 
 - Learner requested post-question answer/detour summaries. Created a partial BFSI-01 revision note and added the recurring recap protocol. The two-row ordering question remains open.
+
+- Sixth response correctly proposes consistent account-lock ordering. Qualified its scope and updated the question recap. Next: a short synthesis of the original withdrawal problem before closing this guided diagnostic question.
