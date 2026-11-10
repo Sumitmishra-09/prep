@@ -26,6 +26,7 @@ Claude instructions: [CLAUDE.md](CLAUDE.md). Codex instructions: [AGENTS.md](AGE
 | [Role strategy](career/STRATEGY.md) | Role selection, project stories, applications, and compensation |
 | [Current state](progress/state.json) | Exact checkpoint for the next instructor |
 | [Question tracker](progress/questions.csv) | Attempts, hint use, scores, and next review dates |
+| [Current question recap](summaries/BFSI-01.md) | Correct answers covered so far, corrections, detours, and pending points |
 | [Git sync guide](SYNC.md) | Continue from another laptop |
 
 ## How lessons work
@@ -35,6 +36,8 @@ The instructor leads the entire lesson in chat: chooses the topic, explains miss
 Lessons can include request timelines, object diagrams, small SQL result tables, payment state machines, and algorithm traces. The instructor explains the picture, asks for a prediction, helps test it, and changes one constraint. The bundled skills support this workflow across laptops; no additional learning platform is required. Say `show me visually` or `help me debug` whenever useful.
 
 One question at a time. You explain a hypothesis, we test it, and the instructor adapts the support. Saying “I don't know” triggers a clear mini-lesson and an analogous example, followed by a smaller application question. After your answer, we examine failure cases and changed constraints, then you explain the result in interview form. Full worked answers to the active exercise require your explicit request; teaching concepts does not.
+
+After each resolved question, the instructor gives a concise correct-answer recap in chat. Longer questions also get a revision note in `summaries/`, covering your correct reasoning, corrections, detours, and edge cases. Partial notes preserve what has been established while leaving unanswered branches open.
 
 You can say `continue`, `teach me from basics`, `give me a short reading`, `hint`, `smaller example`, `let me code`, `challenge my answer`, `mock interview`, `review due questions`, or `pause and save`. These are conversational requests, not installed CLI commands.
 

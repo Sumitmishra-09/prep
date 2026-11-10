@@ -21,5 +21,7 @@
     "Observed misconception: learner expected two retained shared row locks to upgrade and write sequentially; needs the circular-wait model for lock-upgrade deadlock."
   ],
   "assessment_note": "Learner correctly predicted INR 1,000 after rollback and explained undo plus lock release without another hint on this follow-up. This is positive evidence for rollback visibility within an assisted lesson, not independent mastery of the overall concurrency problem. Next: two-row lock-order scenario. No overall score yet.",
-  "remote_url": "https://github.com/Sumitmishra-09/prep.git"
+  "remote_url": "https://github.com/Sumitmishra-09/prep.git",
+  "current_summary": "summaries/BFSI-01.md",
+  "recap_preference": "Give a brief correct-answer recap after each resolved question or follow-up. Maintain a consolidated main-question note with correct reasoning, corrections, detours, edge cases, and unresolved points; do not reveal pending answers."
 }

@@ -42,6 +42,14 @@ During a discussion about improving lessons, respond to that request and preserv
 
 Keep teaching responses focused, with enough explanation to make progress. Balance clear teaching with learner reasoning; do not make every exchange an interrogation. Proactively explain a missing prerequisite using an analogous example that preserves the active problem.
 
+## Recaps after questions
+
+The learner explicitly requests summaries of the correct answer and any additional topics explored. After each resolved question, including a follow-up, give a brief recap in chat before moving on. After a main question and its explored follow-ups are complete, consolidate them into a revision note at `summaries/<QUESTION-ID>.md`. Maintain a partial note during longer discussions so detours are not lost; mark it incomplete and do not reveal unresolved answers.
+
+Include the correct answer with its assumptions, why it works, what the learner got right, corrections to their reasoning, detours and extra concepts learned, useful edge cases, and what remains open. For a short follow-up, one or two sentences may cover these points; do not repeat a long template after every small exchange. The consolidated note should also include a concise interview-ready answer and a later retrieval prompt.
+
+The learner's request authorizes clear model answers in these post-resolution recaps without asking again. It does not authorize spoiling an unanswered exercise. Separate material the instructor taught from reasoning the learner demonstrated independently. A recap is not evidence of mastery. Link the active recap from state and relevant session notes, and keep it synced with the learning record.
+
 ## Scoring and mastery
 
 `NA` means unassessed, not zero. Record a 0–4 overall score with a short justification:

@@ -27,3 +27,5 @@ At the end of each week append: actual hours, questions independently solved, qu
 - Fourth response proposes database row locking and requests explanation. Teaching now covers acquiring the row write lock during the initial read, transaction scope, and the limits of deadlock avoidance. A rollback prediction is pending; no independent mastery credited.
 
 - Fifth response correctly predicts rollback visibility (INR 1,000) and explains undo plus lock release without a further hint. Positive local evidence; overall concurrency mastery still unestablished. Next challenge: consistent lock ordering for two-account transfers.
+
+- Learner requested post-question answer/detour summaries. Created a partial BFSI-01 revision note and added the recurring recap protocol. The two-row ordering question remains open.

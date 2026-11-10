@@ -17,6 +17,17 @@
 - Changed-constraint follow-up:
 - Next retrieval date:
 
+## Question recap
+
+- Recap file and status (partial / complete):
+- Correct answer and assumptions established:
+- Why it works:
+- Learner's correct reasoning and corrections:
+- Detours, extra concepts, and edge cases explored:
+- Unresolved points (without their solutions):
+- Interview-ready answer after resolution:
+- Retrieval prompt:
+
 ## Resume checkpoint
 
 - Exact pending question:

@@ -23,6 +23,8 @@ Choose relevant corner cases rather than listing every imaginable failure. For e
 
 Never equate recognizing a diagram or repeating an explanation with mastery. Check a fresh variant, ask for the reason a tempting alternative fails, and revisit later without scaffolding. Record teaching support honestly; do not score a worked example as independent performance.
 
+After a question or follow-up is resolved, give the learner a concise correct-answer recap, including corrections and useful detours. Follow the recap protocol in `INSTRUCTOR.md` and maintain `summaries/<QUESTION-ID>.md` for revision. Consolidate a longer question's explored branches without revealing pending answers or treating taught material as independent mastery.
+
 ## Visual explanations
 
 Use a small visual when it exposes a relationship that prose hides. Select the format using [visual patterns](references/visual-patterns.md). For a static diagram, consult the sibling [Mermaid skill](../mermaid-diagrams/SKILL.md) and only its relevant reference. A timeline table or plain-text drawing is a valid fallback when the chat cannot render Mermaid.
