@@ -8,9 +8,9 @@
   "current_week": 1,
   "active_question_id": "CON-01",
   "question_status": "in_progress",
-  "highest_hint_used": "H1",
-  "pending_prompt": "How would you change this shared counter so that, after both threads finish, the value is always 2? Choose one approach and explain why it prevents the read-0/read-0/write-1/write-1 sequence.",
-  "next_action": "Assess one learner-proposed counter fix and its scope. The learner correctly rejects volatile-only increment using the existing lost-update timeline. Do not supply multiple fixes or implementation before the attempt. Check that the proposed mechanism covers the complete increment and relevant shared state. If appropriate, ask one changed constraint or an experiment design after establishing the fix.",
+  "highest_hint_used": "H3",
+  "pending_prompt": "Change the counter field to static int value = 0, but keep increment() as an instance synchronized method. T1 calls increment() once on counterA and T2 calls it once on a different instance counterB. Main joins both workers. Is a final value of 2 still guaranteed, and why?",
+  "next_action": "Assess the changed scenario with one shared static field but two receiver instances. The learner chose synchronized increment correctly for one shared object; instructor taught monitor acquisition before the method body and why no second field lock is needed. Do not reveal the new scenario outcome or repair before an attempt. If understanding is demonstrated, seek a short synthesis and close this diagnostic without expanding into every concurrency API.",
   "last_session": "sessions/2026-11-10-lesson-03.md",
   "teaching_mode": "conversation-led visual problem solving with adaptive explanations, focused readings, prediction, guided debugging, correction, and corner-case exploration",
   "completed_diagnostic_questions": [
@@ -24,9 +24,10 @@
     "Observed misconception: learner expected two retained shared row locks to upgrade and write sequentially; needs the circular-wait model for lock-upgrade deadlock.",
     "Review needed: a waiting SELECT FOR UPDATE resumes without a new application query; normal return/block exit is not automatic rollback and Spring exception rollback depends on configured rules.",
     "JAVA-01 observed misconception: attributed same-reference lookup failure to equals with unchanged hash/bucket. In the supplied class hash changes 101 to 202, while self-equality remains true; corrected with a runnable probe and needs later retrieval.",
-    "JAVA-01: different hashes were assumed to imply different buckets; taught the 1/17 same-bucket example and stored-hash screening. Needs later retrieval."
+    "JAVA-01: different hashes were assumed to imply different buckets; taught the 1/17 same-bucket example and stored-hash screening. Needs later retrieval.",
+    "CON-01 observed misconception: proposed an extra value lock in case both threads enter the same synchronized instance method concurrently on the shared receiver. Taught acquisition of the receiver monitor before body execution; changed-instance application pending."
   ],
-  "assessment_note": "CON-01 third response correctly rejects volatile as sufficient for value++ and explains both reads can see 0 before either write. Learner associates volatile with visibility. Instructor refines can see latest into the visibility/ordering guarantee for subsequent volatile reads; already-read values are not refreshed. H1 remains; this is a wording refinement, not evidence of a new misconception. Correctness fix pending; no runtime experiment or overall score.",
+  "assessment_note": "CON-01 fourth response chooses the correct synchronized method but adds another lock on the value in case both threads enter. Observed gap: two different threads cannot enter this synchronized method body concurrently on the same receiver in this example. Instructor teaches the object monitor, lock acquisition before body, and primitive int not being a lock object. Support rises to H3; no implementation executed, overall score, or independent pass.",
   "remote_url": "https://github.com/Sumitmishra-09/prep.git",
   "recap_preference": "Give a brief correct-answer recap after each resolved question or follow-up. Maintain a consolidated main-question note with correct reasoning, corrections, detours, edge cases, and unresolved points; do not reveal pending answers.",
   "last_completed_summary": "summaries/JAVA-01.md",

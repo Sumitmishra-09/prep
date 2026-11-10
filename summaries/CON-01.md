@@ -1,6 +1,6 @@
 # CON-01: two threads increment a shared counter
 
-Status: partial recap; question in progress. Correct initial prediction at H0; highest support now H1 for the reasoning follow-up. No overall score or experiment. Java 17 reference version.
+Status: partial recap; question in progress. Correct initial prediction at H0; highest support now H3 after teaching monitor semantics. No overall score or experiment. Java 17 reference version.
 
 ## Assumptions
 
@@ -33,8 +33,28 @@ The existing read-0/read-0/write-1/write-1 timeline remains valid with volatile:
 
 Reference: [JLS 17 memory-model rules](https://docs.oracle.com/javase/specs/jls/se17/html/jls-17.html#jls-17.4.5), including synchronization-order consistency in section 17.4.7.
 
+## Synchronized method: correct fix, monitor misconception repaired
+
+The learner proposes synchronizing increment(), which is correct for the one shared Counter instance, but also proposes a second lock on value in case both threads enter. The latter is unnecessary: an instance synchronized method acquires the receiver's monitor (this) before executing the body. Two different threads can attempt calls together, but only one can hold that monitor and execute the increment at a time in this example.
+
+Resolved method change:
+
+```java
+synchronized void increment() {
+    value++;
+}
+```
+
+This is an explanatory snippet of the learner-proposed fix, not an executed implementation. T1 acquires the shared counter's monitor, reads 0 and writes 1; T2 waits outside the body. T1 releases the monitor; T2 acquires it, sees the first write, reads 1 and writes 2. Either thread can win first. Releasing and then acquiring the same monitor also provides the visibility guarantee. After both completed joins, main observes 2 under the original assumptions.
+
+Java locks objects. If "synchronizing value" means synchronized(value), the primitive int cannot be used as the required lock object. An inner synchronized(this) block would be redundant in this method, not extra protection. The general requirement is that cooperating accesses protect the full operation with the same monitor; locking does not automatically stop unrelated unsynchronized code from touching the field.
+
+References: [Oracle synchronized methods](https://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html) and [Intrinsic locks](https://docs.oracle.com/javase/tutorial/essential/concurrency/locksync.html). These JDK 8 tutorial rules also apply to this Java 17 exercise.
+
+Support is H3 after the monitor explanation. The correct method choice was learner-proposed; its precise locking behavior was taught. Review due 2026-11-11; no overall score or independent pass yet.
+
 ## Pending
 
-How would you change this shared counter so that, after both threads finish, the value is always 2? Choose one approach and explain why it prevents the read-0/read-0/write-1/write-1 sequence.
+Change the counter field to static int value = 0, but keep increment() as an instance synchronized method. T1 calls increment() once on counterA and T2 calls it once on a different instance counterB. Main joins both workers. Is a final value of 2 still guaranteed, and why?
 
-A concrete fix has not yet been proposed or implemented. See [lesson 3](../sessions/2026-11-10-lesson-03.md).
+The changed-scenario outcome and its repair have not been supplied. See [lesson 3](../sessions/2026-11-10-lesson-03.md).

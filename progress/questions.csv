@@ -9,7 +9,7 @@ JAVA-07,P1,unattempted,0,,,,,,
 JAVA-08,P1,unattempted,0,,,,,,
 JAVA-09,P1,unattempted,0,,,,,,
 JAVA-10,P1,unattempted,0,,,,,,
-CON-01,P0,in_progress,3,,H1,2026-11-10,,,"Correctly rejects volatile-only value++: both reads can precede writes and observe 0. Associates volatile with visibility; instructor refines the guarantee and distinguishes already-read values. Original lost-update reasoning correct. One concrete fix pending. H1; no experiment, score, or independent pass."
+CON-01,P0,in_progress,4,,H3,2026-11-10,2026-11-11,,"Chooses synchronized increment correctly, but suggests an extra value lock in case both threads enter. Instructor explains receiver monitor acquired before body; one common lock covering increment suffices. H3 repair; different receivers with shared static field pending. No experiment, score, or independent pass."
 CON-02,P0,unattempted,0,,,,,,
 CON-03,P0,unattempted,0,,,,,,
 CON-04,P0,unattempted,0,,,,,,
