@@ -35,3 +35,5 @@ At the end of each week append: actual hours, questions independently solved, qu
 - Seventh response correctly names row locking by account ID in a brief synthesis. A focused second-withdrawal outcome probe will check the remaining connection to the business rule; omissions are not treated as proven misconceptions.
 
 - BFSI-01 guided diagnostic completed: 2/4 assisted learning, H3 support, no independent pass/mastery. Learner correctly connects updated balance with rejection; statement resumption and exception/return rollback semantics corrected. Review scheduled 2026-11-11. Next active question: JAVA-01, unattempted.
+
+- JAVA-01 first response correctly identifies hashCode as a diagnostic starting point. Key/hash/value terminology clarified; a concrete key-mutation prediction is pending. No score or mastery recorded. Partial recap saved.
