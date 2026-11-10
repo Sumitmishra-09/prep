@@ -48,8 +48,31 @@ Correction: bucket selection compresses the hash into a limited index range. Wit
 
 Recap: hash stability within one object is insufficient when separate objects can be logically equal; their hashes must agree too. Bucket collisions do not bypass the stored-hash check.
 
+## Requested detour: bit masking and the lookup flow
+
+The learner asked how hashes 1 and 17 both select bucket 1, then where hashCode() and equals() enter the process. The explanation below is instructor-taught; understanding has not yet been checked.
+
+With 16 buckets, valid indices are 0 through 15. OpenJDK 17 uses `(capacity - 1) & spreadHash`. Its allocated table length is a power of two. Integer `&` is bitwise AND: an output bit is 1 only when both input bits are 1. Only five bits are shown here; omitted leading bits are zero.
+
+```text
+  1 = 00001          17 = 10001
+ 15 = 01111          15 = 01111
+      -----               -----
+  & = 00001 = 1        & = 00001 = 1
+```
+
+The mask 15 retains the lowest four bits and clears higher bits. Both hashes end in 0001, so they select the same bucket. For these nonnegative values, this also equals the remainder on division by 16. This power-of-two mask rule is not a general replacement for modulo with any capacity.
+
+For a non-null key, HashMap calls key.hashCode(), then computes `h ^ (h >>> 16)` to spread bits. The small positive values 1 and 17 remain unchanged. It uses this spread hash both to select the bucket and as stored node metadata.
+
+On put, matching an existing key replaces its value; otherwise a new entry is stored. On get, it recomputes the search key's spread hash, selects a bucket, and looks for a candidate with a matching stored hash and either the same key reference or a successful searchKey.equals(storedKey) comparison. A different stored hash rejects that candidate without equals; matching references also avoid an equals call. Thus equal hashes do not alone establish equal keys. These steps describe the relevant matching conditions without detailing tree-bin navigation.
+
+Source: [OpenJDK 17 HashMap](https://github.com/openjdk/jdk17u/blob/master/src/java.base/share/classes/java/util/HashMap.java). This was a source-checked worked explanation, not a new Java experiment.
+
 ## Still open
 
-We want two AccountKey objects with the same accountId to represent the same key. What would you change in AccountKey so its accountId-based equality and hashing stay stable while it is stored in the map? Stable-key redesign remains incomplete.
+Immediate check: Two different AccountKey objects k1 and k2 both return 17 from hashCode(), but k2.equals(k1) is false. After map.put(k1, "ACTIVE"), what will map.get(k2) return, and which check decides it?
+
+Parked design question: We want two AccountKey objects with the same accountId to represent the same key. What would you change in AccountKey so its accountId-based equality and hashing stay stable while it is stored in the map? Stable-key redesign remains incomplete.
 
 No overall score, independent pass, or mastery is recorded yet. The [lesson log](../sessions/2026-11-10-lesson-02.md) preserves the learner's actual response and distinguishes observed output from instructor explanation.

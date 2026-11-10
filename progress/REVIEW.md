@@ -43,3 +43,5 @@ At the end of each week append: actual hours, questions independently solved, qu
 - JAVA-01 third response proposes stable identity hashing. Conditional validity clarified against the existing value-based equals; a distinct-but-equal key lookup is the next probe. No new experiment or mastery recorded.
 
 - JAVA-01 fourth response correctly predicts the distinct-equal-key lookup failure. Corrected different-hash versus different-bucket overgeneralization using stored-hash screening. Next: stable accountId value-key design; no new runtime experiment or independent pass.
+
+- JAVA-01 clarification: taught binary masking and where hashCode/equals participate, at learner request. No new attempt or mastery recorded. Check equal-hash unequal-key lookup next, then resume the stable-key design.
