@@ -9,7 +9,7 @@ JAVA-07,P1,unattempted,0,,,,,,
 JAVA-08,P1,unattempted,0,,,,,,
 JAVA-09,P1,unattempted,0,,,,,,
 JAVA-10,P1,unattempted,0,,,,,,
-CON-01,P0,in_progress,0,,H0,,,,Initial shared-counter prediction presented. Zero learner responses; no score or experiment. Two workers increment once each and main joins both before reading.
+CON-01,P0,in_progress,1,,H1,2026-11-10,,,"Correctly predicts 1 or 2 at H0. Causal reasoning not yet supplied; H1 follow-up requests a read/write ordering ending at 1. No observed misconception, experiment, overall score, or independent pass."
 CON-02,P0,unattempted,0,,,,,,
 CON-03,P0,unattempted,0,,,,,,
 CON-04,P0,unattempted,0,,,,,,
