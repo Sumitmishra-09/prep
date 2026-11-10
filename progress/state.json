@@ -9,8 +9,8 @@
   "active_question_id": "BFSI-01",
   "question_status": "in_progress",
   "highest_hint_used": "H3",
-  "pending_prompt": "Give a short interview-style explanation, in your own words, of how you would handle two simultaneous INR 700 withdrawals from an INR 1,000 account across two application instances.",
-  "next_action": "Assess the learner's synthesis of funds validation, shared-database coordination, transaction scope through commit, waiting and rechecking the returned balance, and failure behavior under the selected assumptions. Ask one targeted repair question if needed. Once the main diagnostic question is sufficiently resolved, provide the consolidated answer/detour recap, assign an evidence-based assisted-learning score, keep later retrieval due, and continue the diagnostic. Do not mark mastery from this guided session alone.",
+  "pending_prompt": "In our PostgreSQL READ COMMITTED example, both requests use SELECT FOR UPDATE on the same account row in their own transactions. The first withdraws INR 700 from INR 1,000 and commits. What happens to the second INR 700 withdrawal when its waiting locking read completes? Explain using the balance it receives.",
+  "next_action": "Assess the expected remaining balance and insufficient-funds decision, including using the value returned after acquiring the lock. If correct, close the guided BFSI-01 diagnostic with a concise model-answer/detour recap and evidence-based assisted score, keep spaced retrieval due, and proceed to JAVA-01. If a gap remains, teach that specific point. Do not demand repeated full recitations of already established content or count brevity as a proven misconception.",
   "last_session": "sessions/2026-11-10-lesson-01.md",
   "teaching_mode": "conversation-led visual problem solving with adaptive explanations, focused readings, prediction, guided debugging, correction, and corner-case exploration",
   "completed_diagnostic_questions": [],
@@ -20,7 +20,7 @@
     "Needs clarification: read-level lock type and scope; preventing nonrepeatable reads alone does not establish the entire withdrawal correctness guarantee.",
     "Observed misconception: learner expected two retained shared row locks to upgrade and write sequentially; needs the circular-wait model for lock-upgrade deadlock."
   ],
-  "assessment_note": "Learner correctly proposed a consistent ascending/descending account-lock order. Instructor clarified one universally chosen direction and limited the claim to the relevant lock cycle, not all database deadlocks. Rollback prediction was also correct. A brief overall withdrawal teach-back is now pending; no overall score or independent whole-question pass yet.",
+  "assessment_note": "Learner's synthesis names row-level locking by account ID, a relevant mechanism. The brief response omits timing, lock mode, transaction lifetime, and the second request's business decision; these are unexpressed, not proven misconceptions. One focused outcome probe remains before closing the guided question.",
   "remote_url": "https://github.com/Sumitmishra-09/prep.git",
   "current_summary": "summaries/BFSI-01.md",
   "recap_preference": "Give a brief correct-answer recap after each resolved question or follow-up. Maintain a consolidated main-question note with correct reasoning, corrections, detours, edge cases, and unresolved points; do not reveal pending answers."

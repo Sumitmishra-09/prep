@@ -31,3 +31,5 @@ At the end of each week append: actual hours, questions independently solved, qu
 - Learner requested post-question answer/detour summaries. Created a partial BFSI-01 revision note and added the recurring recap protocol. The two-row ordering question remains open.
 
 - Sixth response correctly proposes consistent account-lock ordering. Qualified its scope and updated the question recap. Next: a short synthesis of the original withdrawal problem before closing this guided diagnostic question.
+
+- Seventh response correctly names row locking by account ID in a brief synthesis. A focused second-withdrawal outcome probe will check the remaining connection to the business rule; omissions are not treated as proven misconceptions.

@@ -24,6 +24,7 @@ The PostgreSQL-specific locking and deadlock behavior is documented in [row-leve
 - Suggested mutual exclusion and then database row locking as possible coordination mechanisms.
 - Correctly explained the rollback outcome: INR 1,000 is visible after undo and lock release. This follow-up needed no additional hint.
 - Proposed ordering account-lock acquisition ascending or descending to prevent the two-row circular wait. The instructor clarified that every participant must use the same chosen order and qualified the scope of the guarantee.
+- In the synthesis, identified row locking by account ID as the coordination mechanism. The remaining goal is to express how it determines the second withdrawal's outcome.
 
 ## Corrections and qualifications
 
@@ -57,7 +58,7 @@ This is a scoped approach taught during the lesson, not a complete production wi
 
 ## Still open — do not fill in the answer yet
 
-The two-row ordering branch is resolved at the conceptual level. The learner should now give a short interview-style explanation of how they would handle two simultaneous INR 700 withdrawals from an INR 1,000 account across two application instances. The main question is not yet marked complete or mastered; synthesis and later independent retrieval remain pending.
+The two-row ordering branch is resolved at the conceptual level. The learner's brief synthesis correctly names row locking but leaves the operation sequence and final business decision unexpressed. One focused question remains: after the first INR 700 withdrawal commits, what happens to the second INR 700 withdrawal when its waiting locking read completes under PostgreSQL READ COMMITTED? The main question is not yet marked complete or mastered.
 
 ## Retrieval and evidence
 
