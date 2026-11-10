@@ -23,3 +23,5 @@ At the end of each week append: actual hours, questions independently solved, qu
 - Second response revealed a specific gap: sequential waiting versus circular waiting during shared-to-exclusive lock upgrade. Instructor provides a wait trace; learner's revised acquisition approach is pending.
 
 - Third response proposed synchronized mutual exclusion. A valid local direction under shared-monitor/transaction-scope conditions; multi-instance behavior remains to be assessed.
+
+- Fourth response proposes database row locking and requests explanation. Teaching now covers acquiring the row write lock during the initial read, transaction scope, and the limits of deadlock avoidance. A rollback prediction is pending; no independent mastery credited.
