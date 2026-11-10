@@ -9,8 +9,8 @@
   "active_question_id": "JAVA-01",
   "question_status": "in_progress",
   "highest_hint_used": "H3",
-  "pending_prompt": "Create two distinct AccountKey objects k1 and k2 with accountId 101. Keep equals based on accountId, but use Object's hashCode implementation; assume the two objects have different hash codes. After map.put(k1, ACTIVE), will map.get(k2) find that value? Explain why.",
-  "next_action": "Assess the equal-but-distinct-key prediction under the explicitly different-hash assumption. Clarify that stable hashing alone is insufficient: hashing must agree with the chosen equality, and equality/hash-relevant state must remain stable while stored. Then return to redesigning the account-ID key. If the learner needs the concept taught, use a short value-key example rather than an endless sequence of hints. No new runtime experiment has yet been executed for this variation.",
+  "pending_prompt": "We want two AccountKey objects with the same accountId to represent the same key. What would you change in AccountKey so its accountId-based equality and hashing stay stable while it is stored in the map?",
+  "next_action": "Assess the proposed stable value-key design. Keep accountId-based identity; do not supply the implementation before the learner attempts it. Teach any missing immutability concept if needed, then use one fresh application and close the guided diagnostic when supported.",
   "last_session": "sessions/2026-11-10-lesson-02.md",
   "teaching_mode": "conversation-led visual problem solving with adaptive explanations, focused readings, prediction, guided debugging, correction, and corner-case exploration",
   "completed_diagnostic_questions": [
@@ -22,9 +22,10 @@
     "Needs clarification: read-level lock type and scope; preventing nonrepeatable reads alone does not establish the entire withdrawal correctness guarantee.",
     "Observed misconception: learner expected two retained shared row locks to upgrade and write sequentially; needs the circular-wait model for lock-upgrade deadlock.",
     "Review needed: a waiting SELECT FOR UPDATE resumes without a new application query; normal return/block exit is not automatic rollback and Spring exception rollback depends on configured rules.",
-    "JAVA-01 observed misconception: attributed same-reference lookup failure to equals with unchanged hash/bucket. In the supplied class hash changes 101 to 202, while self-equality remains true; corrected with a runnable probe and needs later retrieval."
+    "JAVA-01 observed misconception: attributed same-reference lookup failure to equals with unchanged hash/bucket. In the supplied class hash changes 101 to 202, while self-equality remains true; corrected with a runnable probe and needs later retrieval.",
+    "JAVA-01: different hashes were assumed to imply different buckets; taught the 1/17 same-bucket example and stored-hash screening. Needs later retrieval."
   ],
-  "assessment_note": "Learner proposes stable identity-based hashing, a valid direction for identity-based keys. With the existing accountId-based equals it does not preserve the equals/hashCode contract; explain conditional validity without claiming identity hashes are unique. Equal-but-distinct-key probe pending. Highest support H3; no score or independent pass.",
+  "assessment_note": "Correctly predicts null for distinct equal keys with explicitly different hashes and recognizes hash screening before equals. Correct the overgeneralization that different hashes necessarily imply different buckets: stored hash screening rejects even same-bucket candidates. H3 support; stable value-key redesign pending; no score or independent pass.",
   "remote_url": "https://github.com/Sumitmishra-09/prep.git",
   "recap_preference": "Give a brief correct-answer recap after each resolved question or follow-up. Maintain a consolidated main-question note with correct reasoning, corrections, detours, edge cases, and unresolved points; do not reveal pending answers.",
   "last_completed_summary": "summaries/BFSI-01.md",

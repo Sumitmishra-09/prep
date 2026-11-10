@@ -1,5 +1,5 @@
 id,priority,status,attempts,score,highest_hint,last_attempt,next_review,independent_pass_dates,evidence
-JAVA-01,P0,in_progress,3,,H3,2026-11-10,2026-11-11,,Proposes Object identity hashing to keep hash stable. Conditional validity explained: equality must also agree; existing accountId equals requires equal hashes for separate equal keys. Fresh-object lookup prediction pending. Earlier mutation experiment executed; this variation not yet run. No independent pass.
+JAVA-01,P0,in_progress,4,,H3,2026-11-10,2026-11-11,,Correctly predicts null with explicitly different hashes and recognizes screening before equals. Different hashes need not mean different buckets; instructor explains stored-hash check with 1/17 example. Stable accountId value-key redesign pending. H3; no new Java experiment or independent pass.
 JAVA-02,P0,unattempted,0,,,,,,
 JAVA-03,P0,unattempted,0,,,,,,
 JAVA-04,P0,unattempted,0,,,,,,

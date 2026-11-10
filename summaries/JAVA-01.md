@@ -38,10 +38,18 @@ Observed using Oracle Java / HotSpot 17.0.9: lookup result `null`, zero calls to
 - Extra concept: a map entry can remain present and iterable while a hash-based lookup fails after unsafe key mutation.
 - API qualification: mutating equality-relevant key state while stored in a Map has unspecified behavior; this is an implementation-specific demonstration. See the [Map documentation](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html).
 
-## Still open
+## Identity hashing and equal-but-distinct keys
 
 The learner proposes using Object's identity-based hash to keep it stable. This can be consistent when equality is also identity-based. Changing only the hash while retaining accountId-based equality does not guarantee that equal objects have equal hashes. Identity hashes are not guaranteed unique. See the [Object contract](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html).
 
-Next prediction: create two distinct AccountKey objects with accountId 101. Keep equality based on accountId, but use Object's hash implementation and assume these two objects receive different hashes. After storing ACTIVE with the first object, what happens when looking up with the second? This variation has not been executed or answered yet. Stable-key redesign remains incomplete.
+For two distinct AccountKey objects with accountId 101, accountId-based equality, and explicitly different identity hashes, the learner correctly predicts that get(k2) returns null after put(k1, ACTIVE). They correctly identify hash screening before equality, but assume different hashes necessarily imply different buckets.
+
+Correction: bucket selection compresses the hash into a limited index range. With 16 buckets, illustrative hash values 1 and 17 (unchanged by OpenJDK 17 spreading) both yield index 1. Even in the same bucket, the stored hash must match the lookup hash before the candidate can match by identity/equals. This is a source-based explanation, not a newly executed Java experiment. Identity hashes are not assumed to actually be 1 and 17.
+
+Recap: hash stability within one object is insufficient when separate objects can be logically equal; their hashes must agree too. Bucket collisions do not bypass the stored-hash check.
+
+## Still open
+
+We want two AccountKey objects with the same accountId to represent the same key. What would you change in AccountKey so its accountId-based equality and hashing stay stable while it is stored in the map? Stable-key redesign remains incomplete.
 
 No overall score, independent pass, or mastery is recorded yet. The [lesson log](../sessions/2026-11-10-lesson-02.md) preserves the learner's actual response and distinguishes observed output from instructor explanation.
