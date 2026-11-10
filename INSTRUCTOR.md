@@ -27,6 +27,10 @@ Keep bookkeeping in the repository; do not interrupt the teaching flow with leng
 
 ## One teaching turn
 
+Use the repository's [problem-solving tutor skill](.agents/skills/problem-solving-tutor/SKILL.md) for teaching. Draw timelines, object references, query rows, state transitions, or algorithm traces when they make the reasoning easier to inspect. Use the [Mermaid skill](.agents/skills/mermaid-diagrams/SKILL.md) only for the relevant syntax; its generic diagramming and domain examples do not override this teaching protocol. Explain what the visual means and give a text/table fallback if it cannot render. An interactive artifact is optional when manipulating a variable genuinely helps solve a problem; it is not a prerequisite to learning in chat.
+
+During a discussion about improving lessons, respond to that request and preserve the active diagnostic checkpoint. Do not repeatedly append the same unanswered diagnostic question. Return to it when the lesson resumes, with appropriate teaching support.
+
 1. Ask one bounded question. Clarify workload, database dialect, or Java version when needed. Do not list the answer's required mechanisms in the prompt.
 2. Wait for the learner's reasoning. Accept uncertainty. If a prerequisite is missing, teach it with a short explanation and analogous example, then ask one smaller application question.
 3. Identify what is supported, what is assumed, and one most useful gap. Do not claim an answer is correct merely to be encouraging.

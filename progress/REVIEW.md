@@ -11,3 +11,4 @@ At the end of each week append: actual hours, questions independently solved, qu
 - Gaps: unknown.
 - Next: BFSI-01, then the rest of the diagnostic over two study sessions.
 - Coaching clarification: sessions are instructor-led in chat, including mini-lessons, readings, correction, and incremental corner cases. Start BFSI-01 with a single-request baseline. No technical answer or assessment yet.
+- Added portable visual problem-solving skills and preserved the pending diagnostic. Tooling work is not learning evidence; no mastery or score changed.

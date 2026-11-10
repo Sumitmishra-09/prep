@@ -11,6 +11,7 @@
 - Prefers questions, graduated hints, exploration, pitfalls, and edge scenarios; no direct answer dumps.
 - Clarified that sessions must be led entirely through chat: instructor selects topics, teaches missing concepts, supplies or suggests focused readings, assesses understanding, corrects mistakes, and builds intuition through corner cases. The question bank is not independent homework. If the learner does not know a concept, explain it rather than cycling through hints indefinitely.
 - Wants portable Git-based progress usable with Claude on another laptop.
+- Wants visual explanations and skill-assisted tutoring focused on solving problems, correcting mistakes, and reasoning through corner cases. Prefer relevant diagrams, small examples, and guided debugging in chat; do not assume skill installation alone improves learning speed.
 - GitHub destination: `https://github.com/Sumitmishra-09/prep.git`.
 
 ## Unknown; ask naturally without delaying the diagnostic

@@ -22,6 +22,7 @@ Claude instructions: [CLAUDE.md](CLAUDE.md). Codex instructions: [AGENTS.md](AGE
 | [Diagnostic](sessions/DIAGNOSTIC.md) | Establish your baseline without a lecture |
 | [Practice labs](practice/LABS.md) | Small experiments and a payment-service capstone |
 | [Research and references](research/SOURCES.md) | Dated market evidence and primary technical references |
+| [Visual teaching skills](research/SKILLS.md) | Portable tutoring and diagram skills; reviewed sources and usage |
 | [Role strategy](career/STRATEGY.md) | Role selection, project stories, applications, and compensation |
 | [Current state](progress/state.json) | Exact checkpoint for the next instructor |
 | [Question tracker](progress/questions.csv) | Attempts, hint use, scores, and next review dates |
@@ -30,6 +31,8 @@ Claude instructions: [CLAUDE.md](CLAUDE.md). Codex instructions: [AGENTS.md](AGE
 ## How lessons work
 
 The instructor leads the entire lesson in chat: chooses the topic, explains missing concepts, supplies useful short readings or examples, assesses your reasoning, and corrects mistakes. You do not need to navigate the question bank or figure out the syllabus alone. The repository is the instructor's planning and memory system.
+
+Lessons can include request timelines, object diagrams, small SQL result tables, payment state machines, and algorithm traces. The instructor explains the picture, asks for a prediction, helps test it, and changes one constraint. The bundled skills support this workflow across laptops; no additional learning platform is required. Say `show me visually` or `help me debug` whenever useful.
 
 One question at a time. You explain a hypothesis, we test it, and the instructor adapts the support. Saying “I don't know” triggers a clear mini-lesson and an analogous example, followed by a smaller application question. After your answer, we examine failure cases and changed constraints, then you explain the result in interview form. Full worked answers to the active exercise require your explicit request; teaching concepts does not.
 
