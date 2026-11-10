@@ -53,3 +53,5 @@ At the end of each week append: actual hours, questions independently solved, qu
 - JAVA-01 completed after seventh response: correct status-only mutation prediction; refine unchanged methods to unchanged relevant inputs. Overall 2/4, H3, learning; retrieval 2026-11-11. Recap consolidated. CON-01 starts with zero responses, H0 and no score; no counter experiment executed.
 
 - CON-01 first response correctly predicts 1 or 2 at H0. Next: explain a concrete ordering ending at 1 (H1 focus on reads/writes). No misconception, overall score, independent pass, or executed experiment recorded.
+
+- CON-01 second response correctly explains both threads reading 0 and writing 1. Lost-update timeline established with H1 focus; next scenario changes only the field to volatile. Volatile understanding remains unassessed; no experiment or independent pass.

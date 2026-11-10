@@ -8,10 +8,23 @@ A shared Counter instance starts with int value = 0. Each of two worker threads 
 
 ## Established so far
 
-The learner predicts "1 or 2", which is correct under the stated assumptions. This establishes a correct outcome prediction, not yet an explanation of the concurrent execution. No misconception is inferred from the brief response.
+The learner correctly predicts "1 or 2" and then explains the value-1 case: both threads can read 0, compute 1 and write 1. The outcome prediction was H0; the causal explanation followed an H1 focusing prompt. No misconception has been observed.
+
+## Resolved timeline and recap
+
+| Step | T1 | T2 | Shared value |
+|---|---|---|---|
+| 1 | Reads 0 | | 0 |
+| 2 | | Reads 0 | 0 |
+| 3 | Computes 0 + 1; writes 1 | | 1 |
+| 4 | | Computes 0 + 1; writes 1 | 1 |
+
+Both calls execute, but the second write stores the same result rather than adding to the first result. This is a lost update. The instructor adds the term and explains that value++ comprises reading, adding, and writing; it is not one atomic operation merely because it is one Java statement. A valid ordering yielding 2 has T1 read 0/write 1 and T2 then read 1/write 2. The table is a reasoning trace, not observed runtime output.
+
+Reference: [Oracle thread interference tutorial](https://docs.oracle.com/javase/tutorial/essential/concurrency/interfere.html). The tutorial targets JDK 8; this basic increment behavior also applies to our Java 17 example.
 
 ## Pending
 
-Starting with value = 0, show one ordering of T1 and T2 that leaves the counter at 1 after both threads finish. State what each thread reads and what it writes.
+A colleague changes only the shared field to volatile int value = 0, leaving increment() as value++ and joining both workers before reading. Does this guarantee a final value of 2? Explain using the two-thread timeline.
 
-The causal timeline and fixes remain unanswered and are not included in this recap. See [lesson 3](../sessions/2026-11-10-lesson-03.md).
+The changed-scenario answer and fixes are not yet supplied. Volatile knowledge is unassessed. See [lesson 3](../sessions/2026-11-10-lesson-03.md).

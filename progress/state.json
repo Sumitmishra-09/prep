@@ -9,8 +9,8 @@
   "active_question_id": "CON-01",
   "question_status": "in_progress",
   "highest_hint_used": "H1",
-  "pending_prompt": "Starting with value = 0, show one ordering of T1 and T2 that leaves the counter at 1 after both threads finish. State what each thread reads and what it writes.",
-  "next_action": "Assess the learner timeline for the value-1 outcome. The initial prediction 1 or 2 was correct at H0; causal reasoning has not yet been supplied. The follow-up focuses attention on reads and writes (H1). Do not infer a knowledge gap from the brief answer. Teach increment mechanics if requested or if the timeline reveals a missing prerequisite. Do not reveal fixes yet; no counter experiment has been executed.",
+  "pending_prompt": "A colleague changes only the shared field to volatile int value = 0, leaving increment() as value++ and joining both workers before reading. Does this guarantee a final value of 2? Explain using the two-thread timeline.",
+  "next_action": "Assess the volatile-only proposal prediction without supplying its answer in advance. Learner has correctly explained the original lost-update timeline with H1 focus. Volatile semantics are unassessed; teach them if the learner is unsure or reveals a misconception, then ask one application. No experiment has been executed; do not introduce multiple fixes at once.",
   "last_session": "sessions/2026-11-10-lesson-03.md",
   "teaching_mode": "conversation-led visual problem solving with adaptive explanations, focused readings, prediction, guided debugging, correction, and corner-case exploration",
   "completed_diagnostic_questions": [
@@ -26,7 +26,7 @@
     "JAVA-01 observed misconception: attributed same-reference lookup failure to equals with unchanged hash/bucket. In the supplied class hash changes 101 to 202, while self-equality remains true; corrected with a runnable probe and needs later retrieval.",
     "JAVA-01: different hashes were assumed to imply different buckets; taught the 1/17 same-bucket example and stored-hash screening. Needs later retrieval."
   ],
-  "assessment_note": "CON-01 first response: correctly predicts 1 or 2 without hints. No causal explanation supplied yet, so no overall score or independent pass. H1 follow-up asks for a concrete read/write ordering ending at 1. Earlier JAVA-01 remains assisted learning with next-day retrieval.",
+  "assessment_note": "CON-01 second response correctly explains both threads reading 0 and writing 1. Initial outcomes and concrete lost-update reasoning are supported by learner evidence; H1 remains. Instructor names lost update and non-atomic read/modify/write behavior. Volatile changed-constraint prediction pending; no score, independent pass, or new gap recorded.",
   "remote_url": "https://github.com/Sumitmishra-09/prep.git",
   "recap_preference": "Give a brief correct-answer recap after each resolved question or follow-up. Maintain a consolidated main-question note with correct reasoning, corrections, detours, edge cases, and unresolved points; do not reveal pending answers.",
   "last_completed_summary": "summaries/JAVA-01.md",
