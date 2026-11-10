@@ -39,3 +39,5 @@ At the end of each week append: actual hours, questions independently solved, qu
 - JAVA-01 first response correctly identifies hashCode as a diagnostic starting point. Key/hash/value terminology clarified; a concrete key-mutation prediction is pending. No score or mastery recorded. Partial recap saved.
 
 - JAVA-01 second response predicts the failed lookup correctly but confuses hash/bucket changes with self-equality. Instructor probe executed successfully on Java 17.0.9 and used to correct the mechanism; stable-key redesign remains pending.
+
+- JAVA-01 third response proposes stable identity hashing. Conditional validity clarified against the existing value-based equals; a distinct-but-equal key lookup is the next probe. No new experiment or mastery recorded.

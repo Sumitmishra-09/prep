@@ -1,5 +1,5 @@
 id,priority,status,attempts,score,highest_hint,last_attempt,next_review,independent_pass_dates,evidence
-JAVA-01,P0,in_progress,2,,H3,2026-11-10,2026-11-11,,"Correct null prediction, incorrect causal model (unchanged hash/bucket and failed equality on same reference). Instructor Java 17.0.9 probe showed hash 101->202, get null, equals calls 0, self-equality true, size 1. Root cause explained; safe key design pending. No independent pass."
+JAVA-01,P0,in_progress,3,,H3,2026-11-10,2026-11-11,,Proposes Object identity hashing to keep hash stable. Conditional validity explained: equality must also agree; existing accountId equals requires equal hashes for separate equal keys. Fresh-object lookup prediction pending. Earlier mutation experiment executed; this variation not yet run. No independent pass.
 JAVA-02,P0,unattempted,0,,,,,,
 JAVA-03,P0,unattempted,0,,,,,,
 JAVA-04,P0,unattempted,0,,,,,,

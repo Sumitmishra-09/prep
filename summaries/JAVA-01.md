@@ -40,6 +40,8 @@ Observed using Oracle Java / HotSpot 17.0.9: lookup result `null`, zero calls to
 
 ## Still open
 
-How would you change the design of AccountKey to prevent this failure when it is used as a map key? Do not fill in the learner's proposed fix before they attempt it.
+The learner proposes using Object's identity-based hash to keep it stable. This can be consistent when equality is also identity-based. Changing only the hash while retaining accountId-based equality does not guarantee that equal objects have equal hashes. Identity hashes are not guaranteed unique. See the [Object contract](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html).
+
+Next prediction: create two distinct AccountKey objects with accountId 101. Keep equality based on accountId, but use Object's hash implementation and assume these two objects receive different hashes. After storing ACTIVE with the first object, what happens when looking up with the second? This variation has not been executed or answered yet. Stable-key redesign remains incomplete.
 
 No overall score, independent pass, or mastery is recorded yet. The [lesson log](../sessions/2026-11-10-lesson-02.md) preserves the learner's actual response and distinguishes observed output from instructor explanation.
