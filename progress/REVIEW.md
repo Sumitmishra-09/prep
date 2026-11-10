@@ -1,6 +1,6 @@
 # Weekly review
 
-No technical assessment completed yet. Initial week: 1.
+First guided technical assessment is in progress; no question mastered yet. Initial week: 1.
 
 At the end of each week append: actual hours, questions independently solved, questions requiring hints, due retrievals, strongest evidence, two highest-priority gaps, mock results, and next week's reallocation. Preserve a 27-hour budget. Do not report question coverage as mastery.
 
@@ -12,3 +12,10 @@ At the end of each week append: actual hours, questions independently solved, qu
 - Next: BFSI-01, then the rest of the diagnostic over two study sessions.
 - Coaching clarification: sessions are instructor-led in chat, including mini-lessons, readings, correction, and incremental corner cases. Start BFSI-01 with a single-request baseline. No technical answer or assessment yet.
 - Added portable visual problem-solving skills and preserved the pending diagnostic. Tooling work is not learning evidence; no mastery or score changed.
+
+## First technical evidence, 2026-11-10
+
+- BFSI-01: learner recognized the funds check and concurrency risk, and named read locking / repeatable read as possible approaches.
+- Repair targets: exact-balance boundary; precise lock semantics; distinction between read stability and transaction correctness.
+- Support: prerequisite explanation and a shared-lock upgrade scenario. No score or independent pass yet.
+- Next: reason through the lock-upgrade timeline; return for retrieval on 2026-11-11. Other areas remain unassessed.

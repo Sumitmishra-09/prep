@@ -7,15 +7,18 @@
   "hours_per_week": 27,
   "current_week": 1,
   "active_question_id": "BFSI-01",
-  "question_status": "awaiting_first_attempt",
-  "highest_hint_used": "H1",
-  "pending_prompt": "For one INR 700 withdrawal from an account holding INR 1,000, what check would you make before changing the stored balance? Express your check in Java-like pseudocode or plain English.",
-  "next_action": "Assess the learner's single-request check without inferring wider mastery. Clarify any assumptions or errors, then introduce a second request using a small operation timeline. Teach missing concepts as needed; no complete concurrency fix before exploration.",
+  "question_status": "in_progress",
+  "highest_hint_used": "H3",
+  "pending_prompt": "Assume both transactions hold shared locks on the same account row until transaction end. Both read INR 1,000 and approve INR 700. What happens when both try to acquire the exclusive write lock needed to change that row?",
+  "next_action": "Assess reasoning about shared-lock compatibility and lock upgrade. If stuck, explain which transaction blocks which using a small wait timeline. Then explore a changed locking approach and its tradeoffs, and confirm the learner's database engine before applying exact isolation semantics. Do not provide the complete withdrawal implementation.",
   "last_session": "sessions/2026-11-10-lesson-01.md",
   "teaching_mode": "conversation-led visual problem solving with adaptive explanations, focused readings, prediction, guided debugging, correction, and corner-case exploration",
   "completed_diagnostic_questions": [],
   "due_review_ids": [],
-  "known_gaps": [],
-  "assessment_note": "All skills unassessed. No learner technical attempts yet.",
+  "known_gaps": [
+    "Observed boundary omission: strict balance > withdrawal excludes withdrawing the exact available balance under the exercise assumptions.",
+    "Needs clarification: read-level lock type and scope; preventing nonrepeatable reads alone does not establish the entire withdrawal correctness guarantee."
+  ],
+  "assessment_note": "First BFSI-01 response recognized funds validation and concurrency risk and correctly associated repeatable read with nonrepeatable-read prevention. Exact-balance boundary and proposed concurrency mechanisms need refinement. No overall score or independent pass yet; other topics unassessed.",
   "remote_url": "https://github.com/Sumitmishra-09/prep.git"
 }
