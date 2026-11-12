@@ -1,23 +1,27 @@
 {
   "schema_version": 1,
-  "updated_on": "2026-11-10",
+  "updated_on": "2026-11-12",
   "timezone": "Asia/Calcutta",
   "phase": "diagnostic",
   "plan_weeks": 8,
   "hours_per_week": 27,
   "current_week": 1,
-  "active_question_id": "CON-01",
+  "active_question_id": "SPR-03",
   "question_status": "in_progress",
-  "highest_hint_used": "H3",
-  "pending_prompt": "In Counter, static synchronized void increment() executes value++, while instance synchronized void reset() executes value = 0; both access the same static int value. T1 calls Counter.increment() and T2 calls counterA.reset(). Can the two method bodies execute at the same time? Explain in your own words which object each call locks.",
-  "next_action": "Assess the mixed static/instance monitor explanation as the final application and short synthesis. The learner identified making increment static as the repair; the distinction between the original instance method and repaired static method was taught. If reasoning is correct, consolidate CON-01 as assisted learning with an honest score and next-day retrieval and move to SPR-03. If uncertain, explain monitor identity briefly rather than adding further API branches. No counter experiment has been executed.",
-  "last_session": "sessions/2026-11-10-lesson-03.md",
+  "highest_hint_used": "H0",
+  "pending_prompt": "Assume Spring Framework 6.2 with proxy-based transaction management correctly configured and no existing transaction. A controller calls transfer() on its injected TransferService bean. transfer() is not annotated and directly calls debit() on the same object. debit() is public, annotated with Spring @Transactional, and performs two JDBC updates. Does the annotation on debit() start a Spring-managed transaction for this call? Explain the call path.",
+  "next_action": "Wait for the learner transaction call-path prediction. Do not reveal the proxy/self-call result or repair beforehand. Teach missing prerequisites if needed and vary one constraint at a time. CON-01 is completed as assisted learning, 2/4 H3, with next retrieval Nov 13. BFSI-01 and JAVA-01 reviews are due; run short retrievals at the next topic boundary in this session without treating elapsed dates as evidence of forgetting.",
+  "last_session": "sessions/2026-11-12-lesson-04.md",
   "teaching_mode": "conversation-led visual problem solving with adaptive explanations, focused readings, prediction, guided debugging, correction, and corner-case exploration",
   "completed_diagnostic_questions": [
     "BFSI-01",
-    "JAVA-01"
+    "JAVA-01",
+    "CON-01"
   ],
-  "due_review_ids": [],
+  "due_review_ids": [
+    "JAVA-01",
+    "BFSI-01"
+  ],
   "known_gaps": [
     "Observed boundary omission: strict balance > withdrawal excludes withdrawing the exact available balance under the exercise assumptions.",
     "Needs clarification: read-level lock type and scope; preventing nonrepeatable reads alone does not establish the entire withdrawal correctness guarantee.",
@@ -25,11 +29,11 @@
     "Review needed: a waiting SELECT FOR UPDATE resumes without a new application query; normal return/block exit is not automatic rollback and Spring exception rollback depends on configured rules.",
     "JAVA-01 observed misconception: attributed same-reference lookup failure to equals with unchanged hash/bucket. In the supplied class hash changes 101 to 202, while self-equality remains true; corrected with a runnable probe and needs later retrieval.",
     "JAVA-01: different hashes were assumed to imply different buckets; taught the 1/17 same-bucket example and stored-hash screening. Needs later retrieval.",
-    "CON-01 observed misconception: proposed an extra value lock in case both threads enter the same synchronized instance method concurrently on the shared receiver. Taught acquisition of the receiver monitor before body execution; changed-instance application pending."
+    "CON-01 observed misconception: proposed an extra value lock in case both threads enter the same synchronized instance method concurrently on the shared receiver. Taught receiver-monitor acquisition before body execution. Mixed static/instance application correctly explained on Nov 12; independent retrieval remains due Nov 13."
   ],
-  "assessment_note": "CON-01 fifth response correctly identifies class-associated static storage and ends by suggesting the method should also be static. Distinguish the original code (no guarantee across different receiver monitors) from their proposed static synchronized repair (common Counter.class monitor). Do not dismiss the self-correction or credit the original guarantee as correct. Monitor-selection explanation supplied at H3; mixed-monitor synthesis pending. No overall score or independent pass.",
+  "assessment_note": "CON-01 sixth response correctly identifies class-object versus receiver-object monitors and concurrent execution in their own words after returning on Nov 12. Positive application following prior H3 teaching, not a fresh full independent assessment. Overall guided score 2/4; no counter lab executed. SPR-03 is unassessed.",
   "remote_url": "https://github.com/Sumitmishra-09/prep.git",
   "recap_preference": "Give a brief correct-answer recap after each resolved question or follow-up. Maintain a consolidated main-question note with correct reasoning, corrections, detours, edge cases, and unresolved points; do not reveal pending answers.",
-  "last_completed_summary": "summaries/JAVA-01.md",
-  "current_summary": "summaries/CON-01.md"
+  "last_completed_summary": "summaries/CON-01.md",
+  "current_summary": "summaries/SPR-03.md"
 }

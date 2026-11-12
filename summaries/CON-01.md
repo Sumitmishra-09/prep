@@ -1,6 +1,6 @@
 # CON-01: two threads increment a shared counter
 
-Status: partial recap; question in progress. Correct initial prediction at H0; highest support now H3 after teaching monitor semantics. No overall score or experiment. Java 17 reference version.
+Status: guided diagnostic completed on 2026-11-12; assisted learning, not mastery. Overall 2/4, highest support H3. Retrieval due 2026-11-13. Java 17 reference version. No counter experiment was executed.
 
 ## Assumptions
 
@@ -51,7 +51,7 @@ Java locks objects. If "synchronizing value" means synchronized(value), the prim
 
 References: [Oracle synchronized methods](https://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html) and [Intrinsic locks](https://docs.oracle.com/javase/tutorial/essential/concurrency/locksync.html). These JDK 8 tutorial rules also apply to this Java 17 exercise.
 
-Support is H3 after the monitor explanation. The correct method choice was learner-proposed; its precise locking behavior was taught. Review due 2026-11-11; no overall score or independent pass yet.
+At this Nov 10 stage, support became H3 and retrieval was scheduled for Nov 11. The correct method choice was learner-proposed; its precise locking behavior was taught. The diagnostic was subsequently completed on Nov 12; the current assessment and review date are below.
 
 ## Static field, different receiver instances: resolved follow-up
 
@@ -76,8 +76,23 @@ Both calls acquire the monitor of the Counter Class object. With the original as
 
 Reference: [JLS 17.1](https://docs.oracle.com/javase/specs/jls/se17/html/jls-17.html#jls-17.1). The snippet is explanatory, not executed. H3 support remains; no independent mastery is inferred from the learner's proposed fix.
 
-## Pending
+## Mixed static and instance methods: resolved follow-up
 
-In Counter, static synchronized void increment() executes value++, while instance synchronized void reset() executes value = 0; both access the same static int value. T1 calls Counter.increment() and T2 calls counterA.reset(). Can the two method bodies execute at the same time? Explain in your own words which object each call locks.
+On Nov 12, the learner correctly explains that static synchronized increment() locks Counter.class while instance synchronized reset() locks the receiver. These are different objects, so the method bodies can execute concurrently and access the same static field without mutual exclusion between those two paths. This is a correct explanation in the learner's own words after the earlier monitor teaching; it is not a fresh full independent assessment.
 
-The mixed-method scenario has not been answered. See [lesson 3](../sessions/2026-11-10-lesson-03.md).
+The rule is to identify the actual monitor for every access path to the shared state. Merely seeing synchronized on both methods does not establish mutual exclusion. This resolves the final explored branch.
+
+## Interview-ready recap
+
+An increment of a shared int is a read-modify-write operation. Two threads may both read 0 and write 1, losing an update. Volatile provides visibility and ordering, but does not make the complete increment atomic. A synchronized instance method acquires its receiver's monitor before its body; for the original shared instance this protects the full increment and yields 2 after both workers finish and are joined. For a shared static field accessed through different instances, those receiver monitors do not coordinate; the proposed static synchronized method instead uses the declaring Class object's monitor. Static and instance synchronized methods use different monitors, so they can overlap even when accessing the same field. Determine whether the competing operations use the same monitor and cover the whole operation.
+
+## Assessment and later retrieval
+
+- Correctness: initial outcomes, lost-update timeline, volatile limitation, and final mixed-monitor application correctly explained. The last answer on Nov 12 correctly names both monitor objects and the consequence.
+- Reasoning: initially proposed extra locking inside an already synchronized method and needed clarification of instance versus class monitors. H3 teaching was required; later application was correct.
+- Edge cases: explored different receiver instances, static storage and mixed synchronized methods. Broader alternatives and deterministic experiment design remain unassessed.
+- Communication: final explanation connects monitor identity directly to concurrent access. No study duration invented.
+- Overall: 2/4, learning; no independent pass or mastery. The lesson spans Nov 10 and Nov 12. No counter implementation or experiment was executed.
+- Retrieval due Nov 13: give a 60-120 second explanation without notes, then reason through a fresh monitor-identity or increment variant. Future lab work should include forcing an interleaving without relying on sleep; it has not been completed.
+
+Historical reasoning: [lesson 3](../sessions/2026-11-10-lesson-03.md). Closing response and next checkpoint: [lesson 4](../sessions/2026-11-12-lesson-04.md).

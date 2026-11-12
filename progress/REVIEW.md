@@ -1,6 +1,6 @@
 # Weekly review
 
-Initial diagnostic is in progress: BFSI-01 and JAVA-01 completed as assisted learning; no question mastered yet. Current question: CON-01. Initial week: 1.
+Initial diagnostic is in progress: BFSI-01, JAVA-01 and CON-01 completed as assisted learning; no question mastered yet. Current question: SPR-03. Week: 1.
 
 At the end of each week append: actual hours, questions independently solved, questions requiring hints, due retrievals, strongest evidence, two highest-priority gaps, mock results, and next week's reallocation. Preserve a 27-hour budget. Do not report question coverage as mastery.
 
@@ -61,3 +61,9 @@ At the end of each week append: actual hours, questions independently solved, qu
 - CON-01 fourth response selects synchronized increment but expects a possible concurrent entry requiring another value lock. Taught receiver-monitor acquisition before method-body execution; H3 support, retrieval due 2026-11-11. Next: shared static field accessed through different receiver instances. No counter experiment or independent pass.
 
 - CON-01 fifth response identifies static storage and suggests making the method static too. Credit this repair; clarify original instance-method monitors versus Counter.class for the repaired static method. Final mixed-monitor explanation pending; H3 support, no experiment or independent pass.
+
+## Nov 12 continuation
+
+- CON-01 completed after sixth response: correct mixed-monitor explanation with exact lock objects. Overall 2/4, H3, assisted learning; review Nov 13. No counter lab executed or independent pass.
+- BFSI-01 and JAVA-01 reviews remain due from Nov 11; queue short retrievals at the next topic boundary. Marking review_due is scheduling only, not evidence of forgetting.
+- SPR-03 starts at H0 with zero responses and no score. Reference version Spring 6.2; actual production version still unknown.

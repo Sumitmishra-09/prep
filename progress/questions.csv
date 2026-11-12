@@ -1,5 +1,5 @@
 id,priority,status,attempts,score,highest_hint,last_attempt,next_review,independent_pass_dates,evidence
-JAVA-01,P0,learning,7,2,H3,2026-11-10,2026-11-11,,Guided diagnostic completed. Reaches constructor-only stable ID and correctly applies unequal-key and non-key-field cases after teaching. Initial mutation/hash/bucket/equality confusion required H3 explanation and instructor probe. Refine unchanged methods to unchanged inputs. Score 2 assisted; no independent pass; next-day retrieval.
+JAVA-01,P0,review_due,7,2,H3,2026-11-10,2026-11-11,,Guided diagnostic completed. Reaches constructor-only stable ID and correctly applies unequal-key and non-key-field cases after teaching. Initial mutation/hash/bucket/equality confusion required H3 explanation and instructor probe. Refine unchanged methods to unchanged inputs. Score 2 assisted; no independent pass; next-day retrieval.
 JAVA-02,P0,unattempted,0,,,,,,
 JAVA-03,P0,unattempted,0,,,,,,
 JAVA-04,P0,unattempted,0,,,,,,
@@ -9,7 +9,7 @@ JAVA-07,P1,unattempted,0,,,,,,
 JAVA-08,P1,unattempted,0,,,,,,
 JAVA-09,P1,unattempted,0,,,,,,
 JAVA-10,P1,unattempted,0,,,,,,
-CON-01,P0,in_progress,5,,H3,2026-11-10,2026-11-11,,"Identifies static storage and proposes making increment static too. Clarified original instance synchronized method uses different receivers, while repaired static synchronized method uses Counter.class. Static initialization does not protect later updates. Mixed-monitor synthesis pending; H3, no experiment or independent pass."
+CON-01,P0,learning,6,2,H3,2026-11-12,2026-11-13,,"Guided diagnostic completed. On Nov 12 correctly identifies Counter.class versus instance monitor and explains concurrent access in mixed-method case. Earlier lost-update and volatile reasoning correct; monitor semantics required H3 repair. Overall 2 assisted, no independent pass or counter experiment; retrieval Nov 13."
 CON-02,P0,unattempted,0,,,,,,
 CON-03,P0,unattempted,0,,,,,,
 CON-04,P0,unattempted,0,,,,,,
@@ -31,7 +31,7 @@ JVM-09,P2,unattempted,0,,,,,,
 JVM-10,P1,unattempted,0,,,,,,
 SPR-01,P0,unattempted,0,,,,,,
 SPR-02,P0,unattempted,0,,,,,,
-SPR-03,P0,unattempted,0,,,,,,
+SPR-03,P0,in_progress,0,,H0,,,,"Initial transaction call-path prediction presented with explicit proxy-mode and no-existing-transaction assumptions. Zero responses, no score or execution; production Spring version remains unknown."
 SPR-04,P0,unattempted,0,,,,,,
 SPR-05,P0,unattempted,0,,,,,,
 SPR-06,P0,unattempted,0,,,,,,
@@ -134,7 +134,7 @@ SEC-07,P1,unattempted,0,,,,,,
 SEC-08,P0,unattempted,0,,,,,,
 SEC-09,P1,unattempted,0,,,,,,
 SEC-10,P1,unattempted,0,,,,,,
-BFSI-01,P0,learning,8,2,H3,2026-11-10,2026-11-11,,"Guided diagnostic completed (H3). Correct rollback prediction, lock ordering, and rejected second debit. Corrected strict >, lock-upgrade deadlock, repeated-query assumption, and automatic rollback on exception/exit. Original unsafe timeline not independently reconstructed; fresh retrieval due. No independent pass."
+BFSI-01,P0,review_due,8,2,H3,2026-11-10,2026-11-11,,"Guided diagnostic completed (H3). Correct rollback prediction, lock ordering, and rejected second debit. Corrected strict >, lock-upgrade deadlock, repeated-query assumption, and automatic rollback on exception/exit. Original unsafe timeline not independently reconstructed; fresh retrieval due. No independent pass."
 BFSI-02,P0,unattempted,0,,,,,,
 BFSI-03,P0,unattempted,0,,,,,,
 BFSI-04,P0,unattempted,0,,,,,,
